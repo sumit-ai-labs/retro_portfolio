@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sumit Dubey | Portfolio Gazette — Issue 01</title>
+  <meta name="description" content="Sumit Dubey — Full Stack Engineer crafting systems where logic meets experience." />
+  <meta name="theme-color" content="#f5e9d8" />
+  <meta property="og:title" content="Sumit Dubey | Portfolio Gazette" />
+  <meta property="og:description" content="Full Stack Engineer crafting digital systems with precision and curiosity." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body class="is-loading">
+
+  <!-- Loader -->
+  <div class="loader" id="loader" role="status" aria-label="Loading portfolio">
+    <div class="loader-press">
+      <span class="loader-edition">Issue 01 · Portfolio Edition</span>
+      <div class="loader-title">Sumit Dubey</div>
+      <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+      <div class="loader-sub" id="loaderSub">Warming Press...</div>
+    </div>
+  </div>
+
+  <!-- Fixed UI -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <span class="cursor-label" id="cursorLabel" aria-hidden="true">read</span>
+
+  <!-- Side Navigation -->
+  <aside class="side-index" aria-label="Section index">
+    <div class="brand-mark" aria-label="Sumit logo">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M20 80L50 20L80 80" stroke="currentColor" stroke-width="8" stroke-linejoin="bevel"/>
+        <path d="M20 20V80M80 20V80" stroke="currentColor" stroke-width="8"/>
+      </svg>
+    </div>
+    <nav aria-label="Page sections">
+      <a href="#cover" class="side-link active" aria-current="page">Cover</a>
+      <a href="#about" class="side-link">Article</a>
+      <a href="#projects" class="side-link">Stories</a>
+      <a href="#skills" class="side-link">Classifieds</a>
+      <a href="#archive" class="side-link">Archive</a>
+      <a href="#contact" class="side-link">Subscribe</a>
+    </nav>
+    <div class="print-time" id="printTime" aria-hidden="true"></div>
+  </aside>
+
+  <main id="publication">
+
+    <!-- ═══ SECTION 1: COVER ═══ -->
+    <section class="cover sheet" id="cover">
+      <header class="masthead">
+        <div class="edition-line">
+          <span>Issue 01</span>
+          <span>Portfolio Edition · India</span>
+          <span id="coverDate">May 2026</span>
+        </div>
+        <h1 class="reveal-up" aria-label="Sumit Dubey" style="font-size: clamp(3.5rem, 10vw, 11rem);">Sumit Dubey</h1>
+        <div class="tagline">
+          <span>Engineering Digital Systems</span>
+          <span>Available for Commissions</span>
+        </div>
+      </header>
+
+      <nav class="cover-nav" aria-label="Quick navigation">
+        <a href="#about" class="mag-target">Read the Feature</a>
+        <a href="#projects" class="mag-target">Featured Stories</a>
+        <a href="#contact" class="mag-target">Send a Brief</a>
+      </nav>
+
+      <div class="cover-grid">
+        <article class="lead-note">
+          <p class="kicker reveal-up">Front Page</p>
+          <h2 class="reveal-up">Engineering systems with precision & curiosity.</h2>
+          <p class="reveal-up">A full stack engineer operating at the intersection of rigorous logic and product intuition. Building digital architecture that feels assembled by hand.</p>
+        </article>
+        <figure class="cover-plate" aria-label="Editorial plate">
+          <div class="plate-img plate-one halftone" role="img" aria-label="Abstract editorial collage"></div>
+          <figcaption>Plate 01 / logic and structure</figcaption>
+        </figure>
+        <div class="stamp" aria-hidden="true">Reviewed<br>For Print</div>
+        <div class="folio-mark" aria-hidden="true">1927-70</div>
+      </div>
+    </section>
+
+    <!-- Ticker -->
+    <div class="ticker" aria-label="Running editorial headline">
+      <div class="ticker-track" id="tickerTrack" aria-hidden="true">
+        <span>Breaking Form: where engineering meets editorial</span>
+        <span>Filed under: full stack · machine learning · generative AI</span>
+        <span>Code written deliberately — systems scaled thoughtfully</span>
+        <span>Every problem receives logic, structure, and a point of view</span>
+      </div>
+    </div>
+
+    <!-- ═══ SECTION 2: ABOUT ═══ -->
+    <section class="feature sheet" id="about">
+      <div class="section-label">
+        <span>Feature Article</span><span>Page 02</span>
+      </div>
+      <div class="feature-layout">
+        <div class="feature-title">
+          <p class="kicker reveal-up">Profile · In Depth</p>
+          <h2 class="reveal-up">A full stack engineer working where logic meets experience.</h2>
+          <blockquote class="pull-quote reveal-up">
+            <span class="pull-mark" aria-hidden="true">"</span>
+            Code becomes pacing.<br>Structure becomes clarity.
+            <span class="pull-mark" aria-hidden="true">"</span>
+          </blockquote>
+        </div>
+        <article class="article-copy">
+          <p class="reveal-up">Sumit focuses on engineering systems that are rigorously logical yet intuitively readable. The work is defined by treating architecture as a structural narrative: databases establish the foundation, APIs define the pacing, and the interface serves as the editorial apparatus that gives data its ultimate weight.</p>
+          <p class="reveal-up">Operating at the intersection of Generative AI and full-stack development, the approach strips away unnecessary complexity to deliver raw performance. Every technical decision is weighed against its impact on the user's comprehension and the system's resilience under load.</p>
+          <p class="reveal-up">Through this discipline, code becomes more than instruction—it becomes a crafted experience. Complex algorithms are transformed into elegant, performant digital editions built for scale.</p>
+        </article>
+        <aside class="margin-notes reveal-up" aria-label="Editor annotations">
+          <p>Location: India</p>
+          <p>Education: B.Tech Computer Science</p>
+          <p>Specialisation: Full Stack &amp; Generative AI</p>
+          <div class="editor-note">
+            <i>Current Status: Available for Commissions</i>
+          </div>
+        </aside>
+      </div>
+      <div class="about-stats reveal-up" aria-label="Career statistics">
+        <div class="stat-item"><span class="stat-number" aria-label="8 plus projects">08+</span><span class="stat-label">Commissions Filed</span></div>
+        <div class="stat-item"><span class="stat-number" aria-label="500 plus problems">500+</span><span class="stat-label">Algorithms Decoded</span></div>
+        <div class="stat-item"><span class="stat-number">03</span><span class="stat-label">Core Disciplines</span></div>
+      </div>
+    </section>
+
+    <!-- ═══ SECTION 3: PROJECTS ═══ -->
+    <section class="projects sheet" id="projects">
+      <div class="section-label">
+        <span>Featured Stories</span><span>Page 03–04</span>
+      </div>
+
+      <div class="projects-intro reveal-up">
+        <p class="kicker">Lead Reports</p>
+        <h2>Projects written like headlines, engineered like systems.</h2>
+        <p class="projects-sub">Click any story to read the full case file.</p>
+      </div>
+
+      <div class="projects-grid">
+        <article class="story-card mag-target reveal-up" data-project="policy-ai" role="button" tabindex="0" aria-label="Open PolicyAI case study">
+          <div class="story-img halftone" style="background-image: url('/policy-ai.png'); background-size: cover; background-position: top center; background-color: transparent;" aria-hidden="true"></div>
+          <div class="story-meta"><span>GenAI Application</span><span>2026</span></div>
+          <h3>PolicyAI</h3>
+          <p>Understand Any Insurance Policy in Seconds. Stop drowning in legal jargon. PolicyAI instantly extracts hidden risks and exclusions.</p>
+          <div class="story-footer">
+            <span class="story-cta">Read Case Study →</span>
+            <div class="story-tags"><span class="tag">Next.js</span><span class="tag">Python</span><span class="tag">RAG</span></div>
+          </div>
+          <span class="annotation" aria-hidden="true">Clear, actionable verdict on any document.</span>
+        </article>
+
+        <article class="story-card mag-target reveal-up" data-project="policyai" role="button" tabindex="0" aria-label="Open PolicyAI case study">
+          <div class="story-img plate-two halftone" aria-hidden="true"></div>
+          <div class="story-meta"><span>GenAI Application</span><span>2024</span></div>
+          <h3>Decoding Insurance Complexity With AI</h3>
+          <p>Insurance documents are designed to confuse. PolicyAI breaks them down—extracting risks, exclusions, and insights into something actually understandable.</p>
+          <div class="story-footer">
+            <span class="story-cta">Read Case Study →</span>
+            <div class="story-tags"><span class="tag">Next.js</span><span class="tag">Python</span></div>
+          </div>
+          <span class="annotation" aria-hidden="true">Filed in red pencil: clarity over jargon.</span>
+        </article>
+
+        <article class="story-card story-card--tall mag-target reveal-up" data-project="ledger" role="button" tabindex="0" aria-label="Open Ledger House case study">
+          <div class="story-img plate-three halftone" aria-hidden="true"></div>
+          <div class="story-meta"><span>Full Stack Platform</span><span>2024</span></div>
+          <h3>The Scalable Ledger</h3>
+          <p>A high-performance financial tool that escapes the chaos of traditional databases through calm information design and robust backend architecture.</p>
+          <div class="story-footer">
+            <span class="story-cta">Read Case Study →</span>
+            <div class="story-tags"><span class="tag">React</span><span class="tag">Node.js</span></div>
+          </div>
+          <span class="annotation" aria-hidden="true">Trust arrives through performance.</span>
+        </article>
+
+        <article class="story-card story-card--rotated mag-target reveal-up" data-project="model" role="button" tabindex="0" aria-label="Open Machine Learning case study">
+          <div class="story-img plate-four halftone" aria-hidden="true"></div>
+          <div class="story-meta"><span>Machine Learning</span><span>2023</span></div>
+          <h3>Predictive Signals</h3>
+          <p>Training neural networks to find patterns in noise. This project treated data streams like an editorial archive, sorting the essential from the irrelevant.</p>
+          <div class="story-footer">
+            <span class="story-cta">Read Case Study →</span>
+            <div class="story-tags"><span class="tag">PyTorch</span><span class="tag">Data</span></div>
+          </div>
+          <span class="annotation" aria-hidden="true">Logic applied to chaos.</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- ═══ SECTION 4: SKILLS ═══ -->
+    <section class="classifieds sheet" id="skills">
+      <div class="section-label">
+        <span>Classified Advertisements</span><span>Page 05</span>
+      </div>
+      <div class="classifieds-layout">
+        <div class="classifieds-intro">
+          <h2 class="reveal-up">Available for full stack engineering and generative AI briefs.</h2>
+        </div>
+        <div class="classified-grid">
+          <article class="classified reveal-up">
+            <div class="classified-number" aria-hidden="true">01</div>
+            <h3>Full Stack Development</h3>
+            <p>End-to-end architecture, high-performance databases, and responsive interfaces built with precision.</p>
+          </article>
+          <article class="classified reveal-up">
+            <div class="classified-number" aria-hidden="true">02</div>
+            <h3>Machine Learning</h3>
+            <p>Predictive modeling, rigorous data structuring, and scalable algorithm optimization.</p>
+          </article>
+          <article class="classified reveal-up">
+            <div class="classified-number" aria-hidden="true">03</div>
+            <h3>Generative AI</h3>
+            <p>LLM orchestration, efficient RAG pipelines, and prompt engineering tailored for domain-specific tasks.</p>
+          </article>
+        </div>
+      </div>
+      <div class="skill-bars reveal-up" aria-label="Skill proficiency bars">
+        <div class="skill-bar-item">
+          <span class="skill-name">Next.js / React</span>
+          <div class="skill-track" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="Next.js React 95%">
+            <div class="skill-fill" data-width="95"></div>
+          </div>
+          <span class="skill-pct" aria-hidden="true">95</span>
+        </div>
+        <div class="skill-bar-item">
+          <span class="skill-name">Python / AI</span>
+          <div class="skill-track" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Python AI 90%">
+            <div class="skill-fill" data-width="90"></div>
+          </div>
+          <span class="skill-pct" aria-hidden="true">90</span>
+        </div>
+        <div class="skill-bar-item">
+          <span class="skill-name">Node.js / Backend</span>
+          <div class="skill-track" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Node.js Backend 85%">
+            <div class="skill-fill" data-width="85"></div>
+          </div>
+          <span class="skill-pct" aria-hidden="true">85</span>
+        </div>
+        <div class="skill-bar-item">
+          <span class="skill-name">Algorithms / Logic</span>
+          <div class="skill-track" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Algorithms Logic 92%">
+            <div class="skill-fill" data-width="92"></div>
+          </div>
+          <span class="skill-pct" aria-hidden="true">92</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SECTION 5: ARCHIVE ═══ -->
+    <section class="archive sheet" id="archive">
+      <div class="section-label">
+        <span>Archive Ledger</span><span>Page 06</span>
+      </div>
+      <h2 class="archive-heading reveal-up">Selected chronology of engineering experiments and academic traces.</h2>
+      <div class="timeline" role="list">
+        <article class="timeline-item reveal-up" role="listitem">
+          <time datetime="2024">2024</time>
+          <div class="timeline-body">
+            <h3>Computer Science B.Tech.</h3>
+            <p>Completed rigorous academic training in Computer Science. Built a deeply structured foundation in advanced algorithms, scalable architecture, and computational theory.</p>
+          </div>
+          <div class="timeline-tags"><span class="tag">Education</span><span class="tag">Degree</span></div>
+        </article>
+        <article class="timeline-item reveal-up" role="listitem">
+          <time datetime="2024">2024</time>
+          <div class="timeline-body">
+            <h3>Engineered PolicyAI.</h3>
+            <p>Developed an AI-driven platform to decode complex insurance documents using generative models and advanced retrieval methods.</p>
+          </div>
+          <div class="timeline-tags"><span class="tag">GenAI</span><span class="tag">Launch</span></div>
+        </article>
+        <article class="timeline-item reveal-up" role="listitem">
+          <time datetime="2023">2023</time>
+          <div class="timeline-body">
+            <h3>Deepened full stack architecture practice.</h3>
+            <p>Began assembling scalable web applications, treating databases and API routes with the same precision as front-end interfaces.</p>
+          </div>
+          <div class="timeline-tags"><span class="tag">Engineering</span></div>
+        </article>
+        <article class="timeline-item reveal-up" role="listitem">
+          <time datetime="2022">2022</time>
+          <div class="timeline-body">
+            <h3>The 500+ Algorithms milestone.</h3>
+            <p>Committed to rigorous problem solving, completing hundreds of data structure challenges to build a foundation in algorithmic thinking.</p>
+          </div>
+          <div class="timeline-tags"><span class="tag">Logic</span></div>
+        </article>
+        <article class="timeline-item reveal-up" role="listitem">
+          <time datetime="2020">2020</time>
+          <div class="timeline-body">
+            <h3>Began academic training in computer science.</h3>
+            <p>Entered the intersection of theory and application. The desire to build led to self-taught engineering beyond the curriculum.</p>
+          </div>
+          <div class="timeline-tags"><span class="tag">Origins</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ═══ SECTION 6: CONTACT ═══ -->
+    <section class="subscription sheet" id="contact">
+      <div class="section-label">
+        <span>Subscription Desk</span><span>Final Page</span>
+      </div>
+      <div class="contact-spread">
+        <div class="contact-copy">
+          <p class="kicker reveal-up">Let's Talk</p>
+          <h2 class="reveal-up">Send the brief.<br>Receive the engineered solution.</h2>
+          <p class="reveal-up">For engineering roles, complex challenges, and strange ideas with a pulse. The desk is open for work that demands logic, scale, and a memorable execution.</p>
+          <div class="contact-channels reveal-up">
+            <a href="mailto:sumitdvivedi2504@gmail.com" class="channel-link mag-target">Email Desk</a>
+            <a href="https://www.linkedin.com/in/sumit-dubey-68780a2a7/" target="_blank" rel="noopener noreferrer" class="channel-link mag-target">LinkedIn Archive</a>
+            <a href="https://github.com/sumit-ai-labs" target="_blank" rel="noopener noreferrer" class="channel-link mag-target">GitHub Repository</a>
+            <a href="https://x.com/Sumit250412" target="_blank" rel="noopener noreferrer" class="channel-link mag-target">Twitter</a>
+          </div>
+        </div>
+        <form class="subscription-form reveal-up" id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="nameInput">Name</label>
+            <input type="text" id="nameInput" name="name" placeholder="Your name" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="emailInput">Return Address</label>
+            <input type="email" id="emailInput" name="email" placeholder="you@example.com" required autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <label for="msgInput">Message</label>
+            <textarea id="msgInput" name="message" rows="4" placeholder="Describe the engineering challenge" required></textarea>
+          </div>
+          <button type="submit" id="submitBtn" class="mag-target">Stamp &amp; Send</button>
+        </form>
+      </div>
+      <footer class="colophon">
+        <div class="brand-mark-small" aria-hidden="true">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 80L50 20L80 80" stroke="currentColor" stroke-width="8" stroke-linejoin="bevel"/>
+            <path d="M20 20V80M80 20V80" stroke="currentColor" stroke-width="8"/>
+          </svg>
+        </div>
+        <span>© <span id="footerYear">2026</span> Designed &amp; Engineered by Sumit Dubey</span>
+        <span>Edition 01 · Printed on the open web</span>
+      </footer>
+    </section>
+  </main>
+
+  <!-- Project Dialog -->
+  <dialog class="project-dialog" id="projectDialog" aria-modal="true" aria-labelledby="dialogTitle">
+    <button class="dialog-close mag-target" type="button" id="dialogClose" aria-label="Close project story">✕ Close</button>
+    <div class="dialog-paper">
+      <p class="kicker">Case File</p>
+      <h2 class="dialog-title" id="dialogTitle"></h2>
+      <p class="dialog-hook" id="dialogHook"></p>
+      <div class="dialog-details" role="list">
+        <div class="dialog-detail-item" role="listitem"><span>Role</span><strong class="dialog-role" id="dialogRole"></strong></div>
+        <div class="dialog-detail-item" role="listitem"><span>Tools</span><strong class="dialog-tools" id="dialogTools"></strong></div>
+        <div class="dialog-detail-item" role="listitem"><span>Year</span><strong class="dialog-year" id="dialogYear"></strong></div>
+        <div class="dialog-detail-item" role="listitem"><span>Outcome</span><strong class="dialog-outcome" id="dialogOutcome"></strong></div>
+      </div>
+      <div class="dialog-columns" id="dialogBody"></div>
+    </div>
+  </dialog>
+
+  <div class="konami-toast" id="konamiToast" role="alert" aria-live="polite" aria-hidden="true">The press is pleased with you.</div>
+
+  <script src="./main.js"></script>
+</body>
+</html>
