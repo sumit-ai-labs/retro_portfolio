@@ -125,6 +125,9 @@ h1, h2, h3 { letter-spacing: -0.02em; line-height: 0.95; transform: scaleY(0.98)
   padding: 8px 0; font: 700 12px/1.2 var(--mono); text-transform: uppercase;
   letter-spacing: 1.5px;
 }
+.section-label, .edition-line, .tagline, .story-meta, .contact-channels, .dialog-details {
+  flex-wrap: wrap; row-gap: 6px;
+}
 .section-label span:first-child::before {
   content: ""; display: inline-block; width: 6px; height: 6px;
   background: var(--red); border-radius: 50%; margin-right: 12px;
@@ -193,7 +196,7 @@ h1, h2, h3 { letter-spacing: -0.02em; line-height: 0.95; transform: scaleY(0.98)
 /* Projects Grid */
 .projects-intro { margin: 40px 0; max-width: 600px; }
 .projects-intro h2 { font: 900 3rem/0.95 var(--serif-display); margin-bottom: 10px; letter-spacing: -1px; }
-.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
 .story-card { position: relative; padding: 14px; border: 1px solid var(--line); background: var(--paper); box-shadow: 4px 6px 0 rgba(26,26,26,0.12); cursor: pointer; transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1); transform: rotate(-0.3deg); }
 .story-card:nth-child(even) { transform: rotate(0.2deg); }
 .story-card:hover { transform: scale(1.02) rotate(0deg); box-shadow: 8px 12px 0 rgba(26,26,26,0.15); z-index: 2; }
@@ -297,6 +300,16 @@ h1, h2, h3 { letter-spacing: -0.02em; line-height: 0.95; transform: scaleY(0.98)
   .classified-grid { grid-template-columns: 1fr; }
   .cover-nav { display: flex; flex-direction: column; }
   .cover-nav a { border-left: none; border-bottom: 1px solid var(--line); }
+  .about-stats { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .timeline-tags { text-align: left; margin-top: 8px; }
+  .skill-bar-item { grid-template-columns: 1fr; gap: 6px; }
+  .skill-name { order: 1; }
+  .skill-track { order: 2; }
+  .skill-pct { order: 3; text-align: right; }
+  .colophon { flex-direction: column; gap: 16px; text-align: center; }
+}
+@media (max-width: 480px) {
+  .masthead h1 { font-size: clamp(42px, 10vw, 64px); }
 }
 @media (prefers-reduced-motion: reduce) {
   .grain { animation: none; }
