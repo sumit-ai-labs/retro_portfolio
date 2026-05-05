@@ -319,7 +319,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Direct Sending via Web3Forms API
       // To make this work: Go to https://web3forms.com/, enter your email to get a free Access Key, and paste it below.
-      const accessKey = "YOUR_ACCESS_KEY_HERE"; 
+      const accessKey = "424d4d1d-b4b7-4248-b938-683800836dcc"; 
 
       if (accessKey === "YOUR_ACCESS_KEY_HERE") {
           alert("System Note: To enable direct sending, please get a free access key from web3forms.com and paste it into main.js (Line 315).");
