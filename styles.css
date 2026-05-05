@@ -66,7 +66,7 @@ button, a, input, textarea { cursor: none; }
 
 /* Loader */
 .loader {
-  position: fixed; inset: 0; z-index: 999;
+  position: fixed; inset: 0; z-index: 9999;
   background: var(--paper); display: grid; place-items: center;
   transition: transform 0.8s cubic-bezier(0.8, 0, 0.2, 1);
 }
@@ -159,7 +159,7 @@ body.is-dark h1, body.is-dark h2, body.is-dark h3 { text-shadow: 0 0 0.5px rgba(
   background: transparent; border: 1px solid var(--ink); color: var(--ink);
   font: 700 10px/1 var(--mono); text-transform: uppercase; padding: 6px 12px;
   cursor: pointer; letter-spacing: 1px; transition: all 0.3s;
-  position: relative; z-index: 1000; pointer-events: auto;
+  position: relative; z-index: 150; pointer-events: auto;
 }
 .theme-toggle:hover { background: var(--ink); color: var(--paper); }
 
