@@ -317,30 +317,62 @@ document.addEventListener("DOMContentLoaded", () => {
       submitBtn.style.opacity = '0.7';
       submitBtn.disabled = true;
 
-      // Construct mailto payload
-      const targetEmail = 'sumitdvivedi2504@gmail.com';
-      const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
-      const body = encodeURIComponent(`Sender Name: ${name}\nReturn Address: ${email}\n\nMessage:\n${message}`);
+      // Direct Sending via Web3Forms API
+      // To make this work: Go to https://web3forms.com/, enter your email to get a free Access Key, and paste it below.
+      const accessKey = "YOUR_ACCESS_KEY_HERE"; 
 
-      setTimeout(() => {
-        // Open email client
-        window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
-        
-        // Success state
-        submitBtn.textContent = 'Message Dispatched';
-        submitBtn.style.color = 'var(--red)';
-        submitBtn.style.borderColor = 'var(--red)';
-        submitBtn.style.opacity = '1';
-        
-        // Reset form
-        setTimeout(() => {
+      if (accessKey === "YOUR_ACCESS_KEY_HERE") {
+          alert("System Note: To enable direct sending, please get a free access key from web3forms.com and paste it into main.js (Line 315).");
           submitBtn.textContent = originalText;
-          submitBtn.style.color = '';
-          submitBtn.style.borderColor = '';
+          submitBtn.style.opacity = '1';
           submitBtn.disabled = false;
-          contactForm.reset();
-        }, 3500);
-      }, 600);
+          return;
+      }
+
+      fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+              access_key: accessKey,
+              name: name,
+              email: email,
+              message: message,
+              subject: `Portfolio Inquiry from ${name}`
+          })
+      })
+      .then(async (response) => {
+          if (response.status === 200) {
+              // Success state
+              submitBtn.textContent = 'Message Dispatched';
+              submitBtn.style.color = 'var(--red)';
+              submitBtn.style.borderColor = 'var(--red)';
+              submitBtn.style.opacity = '1';
+              
+              // Reset form
+              setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.style.color = '';
+                submitBtn.style.borderColor = '';
+                submitBtn.disabled = false;
+                contactForm.reset();
+              }, 3500);
+          } else {
+              throw new Error("Transmission failed");
+          }
+      })
+      .catch((error) => {
+          submitBtn.textContent = 'Error Sending';
+          submitBtn.style.color = 'var(--red)';
+          setTimeout(() => {
+              submitBtn.textContent = originalText;
+              submitBtn.style.color = '';
+              submitBtn.style.opacity = '1';
+              submitBtn.disabled = false;
+          }, 3000);
+      });
     });
   }
 
