@@ -174,6 +174,73 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // 1. Theme Toggle
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('is-dark');
+      if (document.body.classList.contains('is-dark')) {
+        themeToggle.textContent = 'Morning Edition';
+      } else {
+        themeToggle.textContent = 'Evening Edition';
+      }
+    });
+  }
+
+  // 2. Headline Micro Animation
+  const headline = document.querySelector('.masthead h1');
+  if (headline) {
+    const text = headline.textContent;
+    headline.innerHTML = '';
+    headline.style.opacity = '1';
+    headline.style.transform = 'none';
+    headline.style.filter = 'none';
+    headline.classList.remove('reveal-up');
+    
+    text.split('').forEach((char, i) => {
+      const span = document.createElement('span');
+      span.textContent = char;
+      if (char === ' ') {
+        span.style.width = '0.25em';
+        span.style.display = 'inline-block';
+      } else {
+        span.style.display = 'inline-block';
+        span.style.opacity = '0';
+        span.style.transform = 'translateY(20px)';
+        span.style.transition = `opacity 0.4s ease ${i * 30}ms, transform 0.4s ease ${i * 30}ms`;
+      }
+      headline.appendChild(span);
+    });
+
+    setTimeout(() => {
+      headline.querySelectorAll('span').forEach(span => {
+        span.style.opacity = '1';
+        span.style.transform = 'translateY(0)';
+      });
+    }, 100);
+  }
+
+  // 3. Subtle Parallax Depth
+  let parallaxTicking = false;
+  window.addEventListener('scroll', () => {
+    if (!parallaxTicking) {
+      window.requestAnimationFrame(() => {
+        if (window.innerWidth > 760) {
+          const scrolled = window.scrollY;
+          document.querySelectorAll('.plate-img, .story-img').forEach(img => {
+            img.style.transform = `translateY(${scrolled * 0.05}px)`;
+          });
+        } else {
+          document.querySelectorAll('.plate-img, .story-img').forEach(img => {
+            img.style.transform = 'none';
+          });
+        }
+        parallaxTicking = false;
+      });
+      parallaxTicking = true;
+    }
+  }, { passive: true });
+
   // Active section tracking
   const sideLinks = document.querySelectorAll('.side-link');
   const sectionObserver = new IntersectionObserver((entries) => {

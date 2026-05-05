@@ -25,6 +25,14 @@ body {
   margin: 0; background: var(--paper); color: var(--ink);
   cursor: none; font-family: var(--serif-body); overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+body.is-dark {
+  --paper: #121212;
+  --paper-warm: #1a1a1a;
+  --ink: #f5e9d8;
+  --red: #ff2a2a;
+  --line: rgba(245, 233, 216, 0.2);
 }
 body.is-loading { overflow: hidden; }
 
@@ -77,6 +85,7 @@ button, a, input, textarea { cursor: none; }
   transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1), height 0.3s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease;
   will-change: transform;
 }
+body.is-dark .cursor { background: rgba(255, 42, 42, 0.35); mix-blend-mode: screen; }
 .cursor::before, .cursor::after { content: ""; position: absolute; background: var(--ink); opacity: 0.75; transition: opacity 0.3s; }
 .cursor::before { left: 50%; top: -12px; width: 1px; height: 42px; }
 .cursor::after { left: -12px; top: 50%; width: 42px; height: 1px; }
@@ -86,6 +95,7 @@ button, a, input, textarea { cursor: none; }
   opacity: 0; transition: opacity 0.2s; will-change: transform, opacity;
 }
 .cursor.is-active { width: 56px; height: 56px; background: rgba(245, 233, 216, 0.38); border-color: var(--red); }
+body.is-dark .cursor.is-active { background: rgba(18, 18, 18, 0.5); }
 .cursor.is-active::before, .cursor.is-active::after { opacity: 0; }
 .cursor-label.is-active { opacity: 1; }
 .mag-target { display: inline-block; position: relative; }
@@ -93,7 +103,8 @@ button, a, input, textarea { cursor: none; }
 /* Layout Base */
 a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.24em; }
 img, figure { margin: 0; }
-h1, h2, h3 { letter-spacing: -0.02em; line-height: 0.95; transform: scaleY(0.98); }
+h1, h2, h3 { letter-spacing: -0.02em; line-height: 0.95; transform: scaleY(0.98); text-shadow: 0 0 0.5px rgba(0,0,0,0.2); }
+body.is-dark h1, body.is-dark h2, body.is-dark h3 { text-shadow: 0 0 0.5px rgba(245,233,216,0.2); }
 
 .side-index {
   position: fixed; left: 0; top: 0; z-index: 90; width: 48px; height: 100vh;
@@ -135,6 +146,13 @@ h1, h2, h3 { letter-spacing: -0.02em; line-height: 0.95; transform: scaleY(0.98)
 }
 
 .kicker { margin: 0 0 12px; color: var(--red); font: 700 12px/1 var(--mono); text-transform: uppercase; letter-spacing: 1.5px; }
+
+.theme-toggle {
+  background: transparent; border: 1px solid var(--ink); color: var(--ink);
+  font: 700 10px/1 var(--mono); text-transform: uppercase; padding: 4px 8px;
+  cursor: pointer; letter-spacing: 1px; transition: all 0.3s;
+}
+.theme-toggle:hover { background: var(--ink); color: var(--paper); }
 
 /* Reveal Effects */
 .reveal-up {
