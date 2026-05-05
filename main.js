@@ -226,13 +226,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!parallaxTicking) {
       window.requestAnimationFrame(() => {
         if (window.innerWidth > 760) {
-          const scrolled = window.scrollY;
           document.querySelectorAll('.plate-img, .story-img').forEach(img => {
-            img.style.transform = `translateY(${scrolled * 0.05}px)`;
+            img.style.transform = ''; // clear buggy translateY
+            const rect = img.getBoundingClientRect();
+            const yOffset = (window.innerHeight - rect.top) * 0.05;
+            img.style.backgroundPositionY = `calc(50% + ${yOffset}px)`;
           });
         } else {
           document.querySelectorAll('.plate-img, .story-img').forEach(img => {
-            img.style.transform = 'none';
+            img.style.transform = '';
+            img.style.backgroundPositionY = '';
           });
         }
         parallaxTicking = false;
