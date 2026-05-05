@@ -224,12 +224,12 @@ body.is-dark h1, body.is-dark h2, body.is-dark h3 { text-shadow: 0 0 0.5px rgba(
 .projects-intro { margin: 40px 0; max-width: 600px; }
 .projects-intro h2 { font: 900 3rem/0.95 var(--serif-display); margin-bottom: 10px; letter-spacing: -1px; }
 .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
-.story-card { position: relative; padding: 14px; border: 1px solid var(--line); background: var(--paper); box-shadow: 4px 6px 0 rgba(26,26,26,0.12); cursor: pointer; transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1); transform: rotate(-0.3deg); }
+.story-card { position: relative; padding: 14px; border: 1px solid var(--line); background: var(--paper); box-shadow: 4px 6px 0 rgba(26,26,26,0.12); cursor: pointer; transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1); transform: rotate(-0.3deg); display: flex; flex-direction: column; height: 100%; }
 .story-card:nth-child(even) { transform: rotate(0.2deg); }
 .story-card:hover { transform: scale(1.02) rotate(0deg); box-shadow: 8px 12px 0 rgba(26,26,26,0.15); z-index: 2; }
-.story-img { height: 200px; background: #b9b295; margin-bottom: 14px; mix-blend-mode: multiply; border: 1px solid var(--line); box-shadow: inset 0 0 20px rgba(0,0,0,0.1); filter: contrast(1.1) saturate(0.8) grayscale(0.2); }
+.story-img { height: 200px; background: #b9b295; margin-bottom: 14px; mix-blend-mode: multiply; border: 1px solid var(--line); box-shadow: inset 0 0 20px rgba(0,0,0,0.1); filter: contrast(1.1) saturate(0.8) grayscale(0.2); flex-shrink: 0; }
 .story-card h3 { margin: 16px 0 8px; font: 900 2.5rem/0.95 var(--serif-display); letter-spacing: -1px; }
-.story-card p { font-size: 1rem; line-height: 1.6; max-width: 65ch; margin-bottom: 0; }
+.story-card p { font-size: 1rem; line-height: 1.6; max-width: 65ch; margin-bottom: 0; flex-grow: 1; }
 .story-footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-top: 20px; border-top: 1px solid var(--line); padding-top: 14px; }
 .story-cta { font: 700 11px/1 var(--mono); text-transform: uppercase; letter-spacing: 1.5px; white-space: nowrap; }
 .story-tags { display: flex; flex-wrap: wrap; gap: 8px; }
