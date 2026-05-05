@@ -289,4 +289,59 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Contact Form Handling
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('nameInput').value.trim();
+      const email = document.getElementById('emailInput').value.trim();
+      const message = document.getElementById('msgInput').value.trim();
+      const submitBtn = document.getElementById('submitBtn');
+      
+      if (!name || !email || !message) {
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Incomplete Fields';
+        submitBtn.style.color = 'var(--red)';
+        setTimeout(() => {
+          submitBtn.textContent = originalText;
+          submitBtn.style.color = '';
+        }, 2000);
+        return;
+      }
+
+      // Visual feedback
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Transmitting...';
+      submitBtn.style.opacity = '0.7';
+      submitBtn.disabled = true;
+
+      // Construct mailto payload
+      const targetEmail = 'sumitdvivedi2504@gmail.com';
+      const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
+      const body = encodeURIComponent(`Sender Name: ${name}\nReturn Address: ${email}\n\nMessage:\n${message}`);
+
+      setTimeout(() => {
+        // Open email client
+        window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
+        
+        // Success state
+        submitBtn.textContent = 'Message Dispatched';
+        submitBtn.style.color = 'var(--red)';
+        submitBtn.style.borderColor = 'var(--red)';
+        submitBtn.style.opacity = '1';
+        
+        // Reset form
+        setTimeout(() => {
+          submitBtn.textContent = originalText;
+          submitBtn.style.color = '';
+          submitBtn.style.borderColor = '';
+          submitBtn.disabled = false;
+          contactForm.reset();
+        }, 3500);
+      }, 600);
+    });
+  }
+
 });
