@@ -177,7 +177,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // 1. Theme Toggle
   const themeToggle = document.getElementById('themeToggle');
   if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
+    themeToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
       document.body.classList.toggle('is-dark');
       if (document.body.classList.contains('is-dark')) {
         themeToggle.textContent = 'Morning Edition';

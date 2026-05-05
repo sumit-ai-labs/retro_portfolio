@@ -157,8 +157,9 @@ body.is-dark h1, body.is-dark h2, body.is-dark h3 { text-shadow: 0 0 0.5px rgba(
 
 .theme-toggle {
   background: transparent; border: 1px solid var(--ink); color: var(--ink);
-  font: 700 10px/1 var(--mono); text-transform: uppercase; padding: 4px 8px;
+  font: 700 10px/1 var(--mono); text-transform: uppercase; padding: 6px 12px;
   cursor: pointer; letter-spacing: 1px; transition: all 0.3s;
+  position: relative; z-index: 1000; pointer-events: auto;
 }
 .theme-toggle:hover { background: var(--ink); color: var(--paper); }
 
