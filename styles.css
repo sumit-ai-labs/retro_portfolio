@@ -442,7 +442,8 @@ body.is-dark .project-dialog::backdrop {
   .lead-note { padding: 18px 16px; }
   .lead-note h2 { font-size: 1.8rem; margin-bottom: 10px; }
   .lead-note p { font-size: 0.92rem; line-height: 1.6; }
-  .stamp { display: none; }
+  
+  .folio-mark { display: none; }
 
   /* ── Feature / About ── */
   .feature-layout { margin-top: 28px; gap: 24px; }
