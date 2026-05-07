@@ -255,8 +255,6 @@ body.is-dark h1, body.is-dark h2, body.is-dark h3 { text-shadow: 0 0 0.5px rgba(
 .project-action { display: inline-flex; align-items: center; gap: 8px; min-height: 34px; padding: 9px 12px; border: 1px solid var(--ink); color: var(--ink); background: transparent; font: 700 11px/1 var(--mono); text-transform: uppercase; text-decoration: none; letter-spacing: 1px; transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease; }
 .project-action:hover, .project-action:focus-visible { background: var(--ink); color: var(--paper); transform: translateY(-2px); outline: none; }
 .action-icon { width: 14px; height: 14px; fill: currentColor; flex: 0 0 auto; }
-.live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 3px rgba(139, 58, 58, 0.12); flex: 0 0 auto; }
-body.is-dark .live-dot { box-shadow: 0 0 0 3px rgba(255, 42, 42, 0.16); }
 .annotation { display: block; margin-top: 16px; font: 400 13px/1.5 var(--serif-body); font-style: italic; color: var(--red); opacity: 0.9; }
 
 /* Folio mark on cover */
