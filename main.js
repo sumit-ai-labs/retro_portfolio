@@ -89,27 +89,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const projectData = {
     "policy-ai": {
       role: "Lead Engineer",
-      tools: "Next.js, Python, FastAPI, spaCy, RAG",
+      tools: "Next.js, Python, FastAPI, spaCy, RAG-ready retrieval",
       year: "2026",
-      outcome: "Clear, actionable policy verdicts",
-      hook: "Insurance documents become readable, searchable, and useful.",
+      outcome: "Document intelligence workflow",
+      hook: "Insurance policies become readable, searchable, and decision-ready.",
       body: [
-        "PolicyAI helps users understand insurance policies without getting buried in legal wording. It extracts summaries, exclusions, risk signals, and decision-ready notes from uploaded policy documents.",
-        "The experience is designed around trust: concise outputs, visible document context, and a clear path from upload to insight.",
-        `<a href="https://github.com/sumit-ai-labs/policy-lens" target="_blank" rel="noopener noreferrer" style="color: var(--red); text-decoration: underline; display: inline-block; margin-top: 10px;">View Repository on GitHub -></a>`
+        "Problem solved: insurance documents are difficult to scan, compare, and trust. PolicyAI structures the reading flow around summaries, exclusions, risk signals, and clear next-step guidance.",
+        "Architecture: the project is organized around a modular document pipeline, API-first processing, NLP extraction, and a retrieval-ready flow that can support vector search and RAG-style document intelligence.",
+        "Engineering quality: the interface keeps outputs concise, the backend logic is separated from presentation concerns, and the system is structured so new document analyzers or model providers can be added without rewriting the product surface.",
+        `<ul class="dialog-proof"><li><strong>Performance</strong><span>Designed to keep upload, parsing, and response states explicit so users are not left waiting without feedback.</span></li><li><strong>Deployment</strong><span>Source is reviewable on GitHub; live demo walkthrough is routed through contact until a public deployment URL is attached.</span></li><li><strong>Scale signal</strong><span>Reusable API and analysis boundaries make the project easier to extend toward larger document sets.</span></li></ul>`,
+        `<div class="dialog-actions"><a href="https://github.com/sumit-ai-labs/policy-lens" target="_blank" rel="noopener noreferrer">View GitHub</a><a href="#contact">Request Live Demo</a></div>`
       ]
     },
 
     "spotify-clone": {
       role: "Full Stack Engineer",
-      tools: "React, Node.js, Express, MongoDB",
+      tools: "React, Node.js, Express, MongoDB, REST patterns",
       year: "2025",
-      outcome: "Polished streaming-style UX",
-      hook: "A Spotify-style product interface with full-stack structure.",
+      outcome: "Production-style music app UX",
+      hook: "A familiar streaming product experience backed by full-stack structure.",
       body: [
-        "The Spotify Clone focuses on the details that make a music app feel usable: fast navigation, recognizable content hierarchy, player controls, and a layout that keeps discovery and playback connected.",
-        "Behind the interface, the project shows full-stack thinking with a React frontend, server-side routes, database-backed state, and reusable UI structure.",
-        `<a href="https://github.com/sumit-ai-labs/Spotify_Clone" target="_blank" rel="noopener noreferrer" style="color: var(--red); text-decoration: underline; display: inline-block; margin-top: 10px;">View Repository on GitHub -></a>`
+        "Problem solved: music interfaces become frustrating when browsing, playback, and navigation feel disconnected. This project keeps the product model familiar while showing clean frontend composition and backend-ready structure.",
+        "Architecture: the app uses React for reusable UI surfaces, Node.js and Express patterns for route organization, and MongoDB-oriented data modeling for future persistence and user state.",
+        "Engineering quality: the layout is responsive, the interaction model is predictable, and the codebase is structured for future authentication, playlist persistence, and streaming API integration.",
+        `<ul class="dialog-proof"><li><strong>Performance</strong><span>UI is organized to reduce unnecessary layout churn across browsing and player regions.</span></li><li><strong>Deployment</strong><span>Source is reviewable on GitHub; live demo walkthrough is routed through contact until a public deployment URL is attached.</span></li><li><strong>Scale signal</strong><span>Component and route boundaries support additional media features without collapsing the interface structure.</span></li></ul>`,
+        `<div class="dialog-actions"><a href="https://github.com/sumit-ai-labs/Spotify_Clone" target="_blank" rel="noopener noreferrer">View GitHub</a><a href="#contact">Request Live Demo</a></div>`
       ]
     }
   };
@@ -134,7 +138,9 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById('dialogYear').textContent = data.year;
       document.getElementById('dialogOutcome').textContent = data.outcome;
       document.getElementById('dialogHook').textContent = data.hook;
-      document.getElementById('dialogBody').innerHTML = data.body.map(p => `<p>${p}</p>`).join("");
+      document.getElementById('dialogBody').innerHTML = data.body.map(block => {
+        return block.trim().startsWith('<') ? block : `<p>${block}</p>`;
+      }).join("");
 
       dialog.showModal();
       document.body.style.overflow = "hidden";
@@ -162,6 +168,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     dialog.addEventListener('click', (e) => {
+      const contactLink = e.target.closest('a[href="#contact"]');
+      if (contactLink) {
+          dialog.close();
+          document.body.style.overflow = "";
+          return;
+      }
+
       if (e.target === dialog) {
           dialog.close();
           document.body.style.overflow = "";
