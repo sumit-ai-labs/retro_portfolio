@@ -98,37 +98,19 @@ document.addEventListener("DOMContentLoaded", () => {
         `<a href="https://github.com/sumit-ai-labs/policy-lens" target="_blank" rel="noopener noreferrer" style="color: var(--red); text-decoration: underline; display: inline-block; margin-top: 10px;">View Repository on GitHub →</a>`
       ]
     },
-    policyai: {
-      role: "Lead Engineer",
-      tools: "Next.js, Python, Vector DB",
-      year: "2024",
-      outcome: "Processed 10,000+ policies",
-      hook: "Decoding Insurance Complexity With AI.",
+
+
+
+    "spotify-clone": {
+      role: "Full Stack Engineer",
+      tools: "React, Node.js, Express, MongoDB, Spotify Web API",
+      year: "2025",
+      outcome: "Full auth + real-time playback",
+      hook: "A pixel-perfect music streaming platform, engineered from the ground up.",
       body: [
-        "Insurance documents are explicitly designed to confuse. This project began as an attempt to translate legal density into human readability using generative models.",
-        "By orchestrating a robust RAG pipeline and a clean, responsive frontend, PolicyAI breaks down dense contracts—extracting risks, exclusions, and financial insights into something actually understandable."
-      ]
-    },
-    ledger: {
-      role: "Full Stack Architect",
-      tools: "React, Node.js, Postgres",
-      year: "2024",
-      outcome: "Zero downtime deployment",
-      hook: "A high-performance financial tool escaping SaaS sameness.",
-      body: [
-        "The challenge was building a financial tool that didn't feel like a spreadsheet. We developed a robust backend architecture paired with a calm, information-dense interface.",
-        "The resulting platform processes complex transactions smoothly while maintaining an editorial pacing, proving that heavy data can still be presented with elegance."
-      ]
-    },
-    model: {
-      role: "ML Engineer",
-      tools: "PyTorch, Python",
-      year: "2023",
-      outcome: "Improved prediction accuracy by 14%",
-      hook: "Training neural networks to find patterns in noise.",
-      body: [
-        "This project treated data streams like an editorial archive, sorting the essential signal from the irrelevant noise using advanced predictive modeling.",
-        "We achieved significant accuracy improvements by treating the data structuring phase with the same rigor as the final interface layer."
+        "Most clones stop at the interface. This one didn't. Built with a full backend stack — Node.js, Express, and MongoDB — wired to the Spotify Web API for real authentication, live track streaming, and dynamic playlist management.",
+        "The result is a feature-complete streaming experience: OAuth login, a search engine across millions of tracks, a persistent player bar, artist deep-dives, and a discovery feed powered by the Spotify recommendation engine. Every interaction was treated as a first-class engineering problem.",
+        `<a href="https://github.com/sumit-ai-labs/spotify-clone" target="_blank" rel="noopener noreferrer" style="color: var(--red); text-decoration: underline; display: inline-block; margin-top: 10px;">View Repository on GitHub →</a>`
       ]
     }
   };
