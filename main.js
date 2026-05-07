@@ -89,28 +89,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const projectData = {
     "policy-ai": {
       role: "Lead Engineer",
-      tools: "Next.js, Tailwind CSS, Python, FastAPI, Spacy, RAG",
+      tools: "Next.js, Python, FastAPI, spaCy, RAG",
       year: "2026",
-      outcome: "Clear actionable verdict",
-      hook: "Understand Any Insurance Policy in Seconds.",
+      outcome: "Clear, actionable policy verdicts",
+      hook: "Insurance documents become readable, searchable, and useful.",
       body: [
-        "Stop drowning in legal jargon. PolicyAI instantly extracts hidden risks, exclusions, and gives you a clear, actionable verdict on any insurance document.",
-        `<a href="https://github.com/sumit-ai-labs/policy-lens" target="_blank" rel="noopener noreferrer" style="color: var(--red); text-decoration: underline; display: inline-block; margin-top: 10px;">View Repository on GitHub →</a>`
+        "PolicyAI helps users understand insurance policies without getting buried in legal wording. It extracts summaries, exclusions, risk signals, and decision-ready notes from uploaded policy documents.",
+        "The experience is designed around trust: concise outputs, visible document context, and a clear path from upload to insight.",
+        `<a href="https://github.com/sumit-ai-labs/policy-lens" target="_blank" rel="noopener noreferrer" style="color: var(--red); text-decoration: underline; display: inline-block; margin-top: 10px;">View Repository on GitHub -></a>`
       ]
     },
 
-
-
     "spotify-clone": {
       role: "Full Stack Engineer",
-      tools: "React, Node.js, Express, MongoDB, Spotify Web API",
+      tools: "React, Node.js, Express, MongoDB",
       year: "2025",
-      outcome: "Full auth + real-time playback",
-      hook: "A pixel-perfect music streaming platform, engineered from the ground up.",
+      outcome: "Polished streaming-style UX",
+      hook: "A Spotify-style product interface with full-stack structure.",
       body: [
-        "Most clones stop at the interface. This one didn't. Built with a full backend stack — Node.js, Express, and MongoDB — wired to the Spotify Web API for real authentication, live track streaming, and dynamic playlist management.",
-        "The result is a feature-complete streaming experience: OAuth login, a search engine across millions of tracks, a persistent player bar, artist deep-dives, and a discovery feed powered by the Spotify recommendation engine. Every interaction was treated as a first-class engineering problem.",
-        `<a href="https://github.com/sumit-ai-labs/spotify-clone" target="_blank" rel="noopener noreferrer" style="color: var(--red); text-decoration: underline; display: inline-block; margin-top: 10px;">View Repository on GitHub →</a>`
+        "The Spotify Clone focuses on the details that make a music app feel usable: fast navigation, recognizable content hierarchy, player controls, and a layout that keeps discovery and playback connected.",
+        "Behind the interface, the project shows full-stack thinking with a React frontend, server-side routes, database-backed state, and reusable UI structure.",
+        `<a href="https://github.com/sumit-ai-labs/Spotify_Clone" target="_blank" rel="noopener noreferrer" style="color: var(--red); text-decoration: underline; display: inline-block; margin-top: 10px;">View Repository on GitHub -></a>`
       ]
     }
   };
@@ -119,25 +118,39 @@ document.addEventListener("DOMContentLoaded", () => {
   const dialogClose = document.getElementById('dialogClose');
   
   if (dialog) {
-    document.querySelectorAll('.story-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const titleEl = document.getElementById('dialogTitle');
-        const h3 = card.querySelector('h3');
-        if (titleEl && h3) titleEl.textContent = h3.textContent;
-        
-        const projectId = card.dataset.project;
-        const data = projectData[projectId];
-        if (data) {
-          document.getElementById('dialogRole').textContent = data.role;
-          document.getElementById('dialogTools').textContent = data.tools;
-          document.getElementById('dialogYear').textContent = data.year;
-          document.getElementById('dialogOutcome').textContent = data.outcome;
-          document.getElementById('dialogHook').textContent = data.hook;
-          document.getElementById('dialogBody').innerHTML = data.body.map(p => `<p>${p}</p>`).join("");
-        }
+    const openProjectDialog = (card) => {
+      if (dialog.open) return;
 
-        dialog.showModal();
-        document.body.style.overflow = "hidden";
+      const titleEl = document.getElementById('dialogTitle');
+      const h3 = card.querySelector('h3');
+      if (titleEl && h3) titleEl.textContent = h3.textContent;
+
+      const projectId = card.dataset.project;
+      const data = projectData[projectId];
+      if (!data) return;
+
+      document.getElementById('dialogRole').textContent = data.role;
+      document.getElementById('dialogTools').textContent = data.tools;
+      document.getElementById('dialogYear').textContent = data.year;
+      document.getElementById('dialogOutcome').textContent = data.outcome;
+      document.getElementById('dialogHook').textContent = data.hook;
+      document.getElementById('dialogBody').innerHTML = data.body.map(p => `<p>${p}</p>`).join("");
+
+      dialog.showModal();
+      document.body.style.overflow = "hidden";
+    };
+
+    document.querySelectorAll('.story-card').forEach(card => {
+      card.addEventListener('click', (event) => {
+        if (event.target.closest('a')) return;
+        openProjectDialog(card);
+      });
+
+      card.addEventListener('keydown', (event) => {
+        if (event.target.closest('a')) return;
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        openProjectDialog(card);
       });
     });
     
@@ -155,7 +168,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-
   // 1. Theme Toggle
   const themeToggle = document.getElementById('themeToggle');
   if (themeToggle) {
