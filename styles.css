@@ -339,6 +339,40 @@ body.is-dark h1, body.is-dark h2, body.is-dark h3 { text-shadow: 0 0 0.5px rgba(
 }
 .konami-toast.is-visible { transform: translateY(0); opacity: 1; }
 
+
+/* === Dark Mode Dialog Contrast Fix === */
+body.is-dark .project-dialog {
+  color: var(--ink);
+}
+body.is-dark .dialog-paper {
+  background: #1a1a1a;
+  color: var(--ink);
+  border-color: rgba(245, 233, 216, 0.25);
+}
+body.is-dark .dialog-title,
+body.is-dark .dialog-columns,
+body.is-dark .dialog-columns p {
+  color: var(--ink);
+}
+body.is-dark .dialog-detail-item strong {
+  color: var(--ink);
+  opacity: 0.9;
+}
+body.is-dark .dialog-close {
+  color: var(--ink);
+}
+body.is-dark .dialog-close:hover { color: var(--red); }
+body.is-dark .dialog-actions a {
+  border-color: rgba(245, 233, 216, 0.4);
+  color: var(--ink);
+}
+body.is-dark .dialog-actions a:hover {
+  background: var(--ink);
+  color: #121212;
+}
+body.is-dark .project-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.85);
+}
 /* Responsive Preservation */
 @media (max-width: 1040px) {
   .cover-grid { grid-template-columns: 1fr; }
