@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Default: Evening Edition (dark mode)
+  document.body.classList.add('is-dark');
   // Loader
   const loader = document.getElementById("loader");
   const loaderFill = document.getElementById("loaderFill");
@@ -181,17 +183,20 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-  // 1. Theme Toggle
+  // 1. Theme Toggle (default: Evening Edition = dark)
   const themeToggle = document.getElementById('themeToggle');
   if (themeToggle) {
     themeToggle.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
       document.body.classList.toggle('is-dark');
+      // is-dark = Evening Edition; no is-dark = Morning Edition
       if (document.body.classList.contains('is-dark')) {
         themeToggle.textContent = 'Morning Edition';
+        themeToggle.setAttribute('aria-label', 'Switch to Morning Edition');
       } else {
         themeToggle.textContent = 'Evening Edition';
+        themeToggle.setAttribute('aria-label', 'Switch to Evening Edition');
       }
     });
   }
