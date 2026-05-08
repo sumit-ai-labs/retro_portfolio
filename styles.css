@@ -454,6 +454,7 @@ body.is-dark .project-dialog::backdrop {
   }
   .article-copy {
     font-size: 1.05rem; line-height: 1.65; gap: 16px;
+    text-align: left; hyphens: none; -webkit-hyphens: none;
   }
   .article-copy p:first-of-type::first-letter {
     float: none; font-size: inherit; line-height: inherit; margin: 0;
