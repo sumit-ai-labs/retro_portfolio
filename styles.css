@@ -453,21 +453,22 @@ body.is-dark .project-dialog::backdrop {
     font-size: 1.5rem; margin: 24px 0; padding: 18px 0;
   }
   .article-copy {
-    font-size: 1rem; line-height: 1.75; gap: 14px;
+    font-size: 1.05rem; line-height: 1.65; gap: 16px;
   }
   .article-copy p:first-of-type::first-letter {
-    font-size: 3rem; margin-right: 6px;
+    float: none; font-size: inherit; line-height: inherit; margin: 0;
+    font-family: inherit; font-weight: inherit; color: inherit;
   }
   .margin-notes {
-    border-top: 1px solid var(--line);
-    padding-top: 18px; margin-top: 4px;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
-    font-size: 10px;
+    border-top: 2px solid var(--ink);
+    padding-top: 20px; margin-top: 12px;
+    display: flex; flex-direction: column; gap: 12px;
+    font-size: 12px; color: var(--ink); text-transform: none; letter-spacing: 0;
   }
-  .margin-notes p { margin: 0; }
+  .margin-notes p { margin: 0; padding-bottom: 8px; border-bottom: 1px dashed var(--line); font-family: var(--mono); }
   .editor-note {
-    grid-column: 1 / -1;
-    margin-top: 4px; font-size: 0.9rem;
+    margin-top: 8px; padding-top: 12px; border-top: 2px solid var(--ink);
+    font-size: 0.95rem; font-family: var(--serif-body); text-transform: none; color: var(--ink);
   }
 
   /* ── Projects ── */
