@@ -192,11 +192,11 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.classList.toggle('is-dark');
       // is-dark = Evening Edition; no is-dark = Morning Edition
       if (document.body.classList.contains('is-dark')) {
-        themeToggle.textContent = 'Morning Edition';
-        themeToggle.setAttribute('aria-label', 'Switch to Morning Edition');
+        themeToggle.textContent = 'Theme: Dark';
+        themeToggle.setAttribute('aria-label', 'Toggle Light Mode');
       } else {
-        themeToggle.textContent = 'Evening Edition';
-        themeToggle.setAttribute('aria-label', 'Switch to Evening Edition');
+        themeToggle.textContent = 'Theme: Light';
+        themeToggle.setAttribute('aria-label', 'Toggle Dark Mode');
       }
     });
   }

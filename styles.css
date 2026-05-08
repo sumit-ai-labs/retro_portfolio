@@ -217,7 +217,7 @@ body.is-dark h1, body.is-dark h2, body.is-dark h3 { text-shadow: 0 0 0.5px rgba(
 .editor-note { margin-top: 18px; color: var(--ink); text-transform: none; font: 400 0.95rem/1.5 var(--serif-body); letter-spacing: 0; }
 .pull-quote { font: 900 2rem/1.1 var(--serif-display); color: var(--red); margin: 32px 0; border-top: 1px solid var(--red); border-bottom: 1px solid var(--red); padding: 24px 0; text-align: center; letter-spacing: -0.5px; }
 
-/* .about-stats removed — stats block cleaned up */
+/* .about-stats removed ï¿½ stats block cleaned up */
 
 /* Projects Grid */
 .projects-intro { margin: 40px 0; max-width: 600px; }
@@ -241,7 +241,7 @@ body.is-dark h1, body.is-dark h2, body.is-dark h3 { text-shadow: 0 0 0.5px rgba(
 .story-card h3 { margin: 16px 0 8px; font: 900 2.2rem/0.95 var(--serif-display); letter-spacing: -1px; }
 .story-card p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 0; flex-grow: 1; }
 .project-proof { display: grid; gap: 10px; margin: 18px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
-.project-proof li { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding-top: 10px; font-size: 0.88rem; line-height: 1.45; }
+.project-proof li { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding-top: 10px; font-size: 0.88rem; line-height: 1.45; align-items: baseline; }
 .project-proof strong { color: var(--red); font: 700 10px/1.2 var(--mono); text-transform: uppercase; letter-spacing: 1px; }
 .story-footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-top: 20px; border-top: 1px solid var(--line); padding-top: 14px; }
 .story-cta { padding: 0; border: 0; background: transparent; font: 700 11px/1 var(--mono); text-transform: uppercase; letter-spacing: 1.5px; white-space: nowrap; color: var(--red); }
@@ -407,7 +407,7 @@ body.is-dark .project-dialog::backdrop {
   .side-index nav {
     flex-direction: row; writing-mode: horizontal-tb; transform: none;
     flex-wrap: nowrap; gap: 14px; margin: 0; padding: 0;
-    align-items: center; width: auto;
+    align-items: center; width: auto; flex-shrink: 0;
   }
   .side-index a {
     writing-mode: horizontal-tb; transform: none;
@@ -428,7 +428,7 @@ body.is-dark .project-dialog::backdrop {
   .edition-line span { opacity: 0.75; }
   .theme-toggle {
     font-size: 9px; padding: 5px 10px;
-    border-radius: 20px; margin-left: auto;
+    border-radius: 20px; margin-left: auto; flex-shrink: 0;
   }
   .masthead h1 {
     font-size: clamp(52px, 13vw, 80px);
