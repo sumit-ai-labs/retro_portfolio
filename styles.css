@@ -207,7 +207,7 @@ body.is-dark h1, body.is-dark h2, body.is-dark h3 { text-shadow: 0 0 0.5px rgba(
 .feature-layout { display: grid; grid-template-columns: repeat(12, 1fr); gap: 30px; margin-top: 38px; }
 .feature-title { grid-column: 1 / 6; }
 .feature-title h2 { margin: 0; font: 900 3rem/0.95 var(--serif-display); letter-spacing: -1px; }
-.article-copy { grid-column: 6 / 11; display: grid; gap: 16px; text-align: left; line-height: 1.72; font-size: 1.08rem; max-width: 68ch; }
+.article-copy { grid-column: 6 / 11; display: grid; gap: 16px; text-align: justify; hyphens: auto; -webkit-hyphens: auto; line-height: 1.72; font-size: 1.08rem; max-width: 68ch; }
 .article-copy p { margin: 0; }
 .article-copy p:first-of-type::first-letter {
   float: left; font-size: 4rem; line-height: 0.8; margin-right: 8px; margin-top: 4px;
