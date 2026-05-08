@@ -380,7 +380,7 @@ body.is-dark .project-dialog::backdrop {
   .lead-note { grid-column: 1 / -1; }
   .cover-plate { grid-column: 1 / -1; min-height: 300px; }
   .feature-layout, .classifieds-layout, .contact-spread, .focus-layout { grid-template-columns: 1fr; }
-  .article-copy, .margin-notes { grid-column: 1 / -1; }
+  .feature-title, .article-copy, .margin-notes { grid-column: 1 / -1; }
   /* Collapse projects to 2-column on tablet */
   .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .projects-grid .story-card:nth-child(n) { grid-column: span 1; }
