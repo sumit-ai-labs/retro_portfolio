@@ -1,46 +1,70 @@
-# Portfolio Gazette — Issue 01
+# Portfolio Gazette - Issue 01
 
-A high-end, editorial-style personal portfolio designed as a digital newspaper ("Gazette"). This project escapes the typical "SaaS sameness" of modern web design by presenting a developer's career through rigorous layout grids, vintage typography, and abstract plates.
+A high-end, editorial-style personal portfolio designed as a digital newspaper ("Gazette"). The experience has been migrated from vanilla HTML/CSS/JS to a production-ready Next.js App Router architecture while preserving the original editorial identity.
 
-## 📰 Concept & Design
-The site is built around the concept of a printed publication, blending physical constraints (halftone imagery, ink borders, classified ads) with digital interactivity (magnetic cursors, scroll reveals, modal overlays).
+## Concept & Design
+
+The site is built around the concept of a printed publication, blending physical constraints like halftone imagery, ink borders, and classified ads with restrained digital interactivity.
 
 - **Theme**: Retro / Editorial Newspaper
 - **Focus**: Full Stack Engineering, Machine Learning, and Generative AI
 - **Vibe**: Rigorous logic meets hand-crafted layout
 
-## ✨ Key Features
-- **Editorial Layout**: Sections are designed as "Pages" (Cover, Feature Article, Lead Reports, Classified Advertisements, Archive Ledger).
-- **Custom Design System**: Pure CSS architecture utilizing CSS Variables for consistent theming (`--paper`, `--ink`, `--red`).
-- **Micro-Interactions**: 
-  - Magnetic cursor that expands on actionable items (`.mag-target`).
-  - Subtle noise/grain and vignette overlays for a textured "printed" feel.
-  - Intersection Observer-based scroll reveals (`.reveal-up`).
-- **Dynamic Content Modal**: Project case studies open in a beautifully structured `<dialog>` element, injecting data dynamically via JavaScript.
-- **Hidden Features**: Includes a secret Konami code interaction.
+## Key Features
 
-## 🛠 Tech Stack
-Built entirely without heavy frontend frameworks to maintain absolute control over the DOM, layout, and performance.
-- **HTML5**: Semantic tags, accessible landmarks, structured `.sheet` grids.
-- **CSS3**: Custom properties, Grid layouts, `mix-blend-mode` effects, and complex halftone filters.
-- **Vanilla JavaScript**: DOM manipulation, Intersection Observers, and cursor tracking.
+- **Single-page editorial narrative**: Cover, Feature, Projects, Skills, Focus, Archive, and Contact remain in one smooth scroll.
+- **Next.js App Router**: Static homepage plus prepared `/projects/[slug]` and `/blog/[slug]` architecture.
+- **Preserved global design system**: CSS variables maintain paper, ink, crimson, borders, grain, and typography rhythm.
+- **Framer Motion restraint**: Loader, reveal animations, cursor smoothing, and headline micro-animation only.
+- **Evening Edition**: ThemeContext with localStorage persistence and CSS-variable dark mode.
+- **SEO ready**: Metadata API, Open Graph, Twitter cards, canonical URL, and JSON-LD Person/Website/Project data.
+- **Secure contact form**: Web3Forms is handled through a Next.js Server Action with the API key kept in environment variables.
 
-## 📂 Architecture
-- `index.html`: The complete single-page publication structure.
-- `styles.css`: The styling engine, maintaining the strict typographic rhythm and color palette.
-- `main.js`: Interaction logic, scroll progress tracking, and dynamic dialog rendering.
+## Tech Stack
 
-## 🚀 Running Locally
-Because it's a static site, you can run it simply by opening `index.html` in your browser, or by using any local development server:
+- **Next.js App Router**
+- **React**
+- **Framer Motion**
+- **next/image**
+- **next/font**
+- **Server Actions**
+- **Vercel Analytics**
+
+## Architecture
+
+- `app/`: App Router pages, metadata, project routes, blog placeholders, and server actions.
+- `components/sections/`: Editorial page sections.
+- `components/ui/`: Reusable interaction and layout primitives.
+- `context/`: Theme persistence.
+- `data/`: Profile, project, and planned blog data.
+- `public/`: Migrated visual assets.
+- `styles/globals.css`: Preserved editorial design system.
+
+## Running Locally
 
 ```bash
-# Using Python
-python -m http.server 8000
-
-# Using Node.js / npx
-npx serve .
+npm install
+npm run dev
 ```
 
-## 📜 Credits
-Designed and Engineered by **Sumit Dubey**. 
-Edition 01 · Printed on the open web.
+For production verification:
+
+```bash
+npm run lint
+npm run build
+npm run start
+```
+
+## Contact Form
+
+Create a local environment file with the server-side Web3Forms key:
+
+```bash
+WEB3FORMS_ACCESS_KEY=your-key
+NEXT_PUBLIC_SITE_URL=https://your-domain.example
+```
+
+## Credits
+
+Designed and Engineered by **Sumit Dubey**.
+Edition 01 - Printed on the open web.
