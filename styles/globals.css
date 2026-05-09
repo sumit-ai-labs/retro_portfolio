@@ -576,9 +576,9 @@ html[data-theme="evening"] .dialog-actions a:hover { background: var(--ink); col
     overflow-y: hidden; overflow-x: auto; scrollbar-width: none;
     gap: 0;
   }
-  html[data-theme="evening"] .side-index { background: rgba(18, 18, 18, 0.97); }
+  html[data-theme="evening"] .side-index { background: rgba(23, 20, 20, 0.97); }
   .side-index::-webkit-scrollbar { display: none; }
-  .brand-mark { margin-right: 14px; padding: 0; border-bottom: 0; flex-shrink: 0; }
+  .brand-mark { margin-right: 14px; padding: 0; border-bottom: 0; flex-shrink: 0; width: auto; }
   .brand-mark svg { width: 20px; height: 20px; }
   .side-index nav {
     flex-direction: row; writing-mode: horizontal-tb; transform: none;
@@ -616,8 +616,8 @@ html[data-theme="evening"] .dialog-actions a:hover { background: var(--ink); col
   .tagline { font-size: 10px; gap: 8px; padding: 8px 0; }
   .cover-nav { display: flex; flex-direction: column; }
   .cover-nav a { border-left: none; border-bottom: 1px solid var(--line); padding: 14px 0; }
-  .cover-grid { margin-top: 18px; gap: 15px; }
-  .lead-note { padding: 16px 15px; }
+  .cover-grid { margin-top: 32px; gap: 15px; }
+  .lead-note { padding: 20px 16px; }
   .lead-note h2 { font-size: 1.66rem; margin-bottom: 10px; }
   .lead-note p { font-size: 0.92rem; line-height: 1.6; }
   
