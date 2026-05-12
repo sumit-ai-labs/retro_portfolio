@@ -35,11 +35,11 @@ export function Contact() {
     const form = e.currentTarget;
 
     // Honeypot — silently drop bot submissions
-    if (form.website?.value) return;
+    if (form.elements['website']?.value) return;
 
-    const name    = form.name.value.trim();
-    const email   = form.email.value.trim();
-    const message = form.message.value.trim();
+    const name    = form.elements['name'].value.trim();
+    const email   = form.elements['email'].value.trim();
+    const message = form.elements['message'].value.trim();
 
     const err = validate(name, email, message);
     if (err) {
