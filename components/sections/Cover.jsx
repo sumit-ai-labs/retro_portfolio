@@ -51,7 +51,7 @@ export function Cover() {
           <div className="plate-img plate-one halftone" aria-label="Abstract editorial collage" data-parallax-media>
             <Image src="/images/baki.jpeg" alt="" fill priority sizes="(max-width: 1040px) 90vw, 46vw" />
           </div>
-          <figcaption>Plate 01 / logic and structure</figcaption>
+          <figcaption>SUMIT DUBEY</figcaption>
         </figure>
         <div className="stamp" aria-hidden="true">Reviewed<br />For Print</div>
         <div className="folio-mark" aria-hidden="true">1927-70</div>

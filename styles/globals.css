@@ -487,9 +487,20 @@ html[data-theme="evening"] .capability-entry:hover { background: rgba(255, 42, 4
 .subscription-form input:focus, .subscription-form textarea:focus { outline: none; border-bottom: 2px solid var(--red); }
 .subscription-form input:focus-visible, .subscription-form textarea:focus-visible { background: rgba(139, 58, 58, 0.06); }
 .subscription-form button { padding: 12px 24px; border: 2px solid var(--ink); background: transparent; color: var(--ink); font: 900 12px/1 var(--mono); text-transform: uppercase; letter-spacing: 1.5px; cursor: pointer; margin-top: 10px; width: 100%; box-shadow: 4px 4px 0 rgba(26,26,26,0.1); transition: all 0.2s ease; }
-.subscription-form button:hover { background: var(--red); color: white; transform: translate(-2px, -2px); box-shadow: 6px 6px 0 rgba(26,26,26,0.15); }
-.subscription-form button[data-state="success"], .subscription-form button[data-state="error"] { color: var(--red); border-color: var(--red); }
+.subscription-form button:hover:not(:disabled) { background: var(--red); color: white; transform: translate(-2px, -2px); box-shadow: 6px 6px 0 rgba(26,26,26,0.15); }
+.subscription-form button:disabled { opacity: 0.7; cursor: not-allowed; }
+.subscription-form button[data-state="success"] { color: var(--red); border-color: var(--red); }
+.subscription-form button[data-state="error"] { color: var(--red); border-color: var(--red); }
 .form-status { min-height: 18px; margin: 0 0 10px; color: var(--red); font: 700 10px/1.4 var(--mono); letter-spacing: 1px; text-transform: uppercase; }
+
+/* Honeypot — off-screen, invisible to humans, visible to bots */
+.form-honeypot {
+  position: absolute; left: -99999px;
+  width: 1px; height: 1px;
+  overflow: hidden; pointer-events: none;
+  opacity: 0; tabindex: -1;
+}
+
 
 .colophon { display: flex; justify-content: space-between; align-items: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--line); font: 400 11px/1 var(--mono); text-transform: uppercase; opacity: 0.6; letter-spacing: 1px; }
 .brand-mark-small svg { width: 20px; height: 20px; color: var(--ink); }
