@@ -33,6 +33,15 @@ export function SideIndex() {
     return () => observer.disconnect();
   }, []);
 
+  // Auto-reveal active link in mobile horizontal scroll rail
+  useEffect(() => {
+    if (typeof window === "undefined" || window.innerWidth > 760) return;
+    const activeLink = document.querySelector(".side-link.active");
+    if (activeLink) {
+      activeLink.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+    }
+  }, [active]);
+
   return (
     <aside className="side-index" aria-label="Section index">
       <BrandMark />
