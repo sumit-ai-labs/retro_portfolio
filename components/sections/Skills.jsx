@@ -7,11 +7,27 @@ const classifieds = [
   ["03", "AI Workflows", "Document intelligence, retrieval pipelines, prompt design, vector-search concepts, and LLM features built around usable product flows."]
 ];
 
-const skills = [
-  ["React / Next.js", 95],
-  ["Python / AI Systems", 90],
-  ["Node.js / APIs", 85],
-  ["DSA / System Logic", 92]
+const capabilities = [
+  {
+    domain: "Frontend",
+    focus: "React / Next.js",
+    skills: ["Component architecture", "SSR & SSG patterns", "Responsive layouts", "Performance tuning", "Accessibility"]
+  },
+  {
+    domain: "Backend",
+    focus: "Node.js / Python / APIs",
+    skills: ["REST API design", "FastAPI microservices", "Database modeling", "Route architecture", "Deployment patterns"]
+  },
+  {
+    domain: "AI Engineering",
+    focus: "RAG / LLM Systems",
+    skills: ["Retrieval pipelines", "Prompt engineering", "Vector search", "Document intelligence", "LLM integration"]
+  },
+  {
+    domain: "Foundations",
+    focus: "DSA / System Design",
+    skills: ["Data structures", "Algorithm design", "System thinking", "Code quality", "Problem decomposition"]
+  }
 ];
 
 export function Skills() {
@@ -32,14 +48,18 @@ export function Skills() {
           ))}
         </div>
       </div>
-      <Reveal className="skill-bars" aria-label="Skill proficiency bars">
-        {skills.map(([name, value]) => (
-          <div className="skill-bar-item" key={name}>
-            <span className="skill-name">{name}</span>
-            <div className="skill-track" role="progressbar" aria-valuenow={value} aria-valuemin="0" aria-valuemax="100" aria-label={`${name} ${value}%`}>
-              <div className="skill-fill" style={{ width: `${value}%` }} />
-            </div>
-            <span className="skill-pct" aria-hidden="true">{value}</span>
+
+      {/* Capability Ledger — replaces misleading % bars */}
+      <Reveal as="div" className="capability-ledger" aria-label="Engineering capabilities by domain">
+        {capabilities.map(({ domain, focus, skills }) => (
+          <div className="capability-entry" key={domain}>
+            <div className="capability-domain">{domain}</div>
+            <h4 className="capability-focus">{focus}</h4>
+            <ul className="capability-skills">
+              {skills.map((skill) => (
+                <li key={skill}>{skill}</li>
+              ))}
+            </ul>
           </div>
         ))}
       </Reveal>

@@ -366,11 +366,27 @@ html[data-theme="evening"] .plate-one img { filter: none; }
 .editorial-note { margin-top: 18px; padding-top: 12px; border-top: 1px dotted var(--line); font: 400 0.85rem/1.4 var(--serif-body); font-style: italic; color: var(--ink); opacity: 0.7; }
 
 .project-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-.story-cta { padding: 0; border: 0; background: transparent; font: 700 12px/1 var(--mono); text-transform: uppercase; letter-spacing: 1.5px; white-space: nowrap; color: var(--red); }
-.story-cta-button { cursor: pointer; text-align: left; border-bottom: 1px solid transparent; transition: color 0.2s ease, border-color 0.2s ease; display: inline-flex; align-items: center; gap: 6px; }
+.story-cta { background: transparent; font: 700 12px/1 var(--mono); text-transform: uppercase; letter-spacing: 1.5px; white-space: nowrap; color: var(--red); }
+/* Editorial CTA — visible without being SaaS-blue */
+.story-cta-button {
+  cursor: pointer; text-align: left;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 16px;
+  border: 1px solid var(--red);
+  background: rgba(255, 42, 42, 0.05);
+  transition: background 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.2s ease;
+}
 .story-cta-button .action-arrow { display: inline-block; transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1); }
-.story-card:hover .story-cta-button, .story-cta-button:hover, .story-cta-button:focus-visible { color: var(--ink); border-bottom-color: currentColor; outline: none; }
-.story-card:hover .action-arrow, .story-cta-button:hover .action-arrow { transform: translateX(3px); }
+.story-card:hover .story-cta-button, .story-cta-button:hover, .story-cta-button:focus-visible {
+  background: rgba(255, 42, 42, 0.12);
+  transform: translateY(-1px);
+  box-shadow: 2px 3px 0 rgba(255, 42, 42, 0.18);
+  color: var(--red);
+  outline: none;
+}
+.story-card:hover .action-arrow, .story-cta-button:hover .action-arrow { transform: translateX(4px); }
 
 .project-action { display: inline-flex; align-items: center; gap: 7px; min-height: 34px; padding: 10px 14px; border: 1px solid var(--ink); border-radius: 6px; color: var(--ink); background: transparent; font: 700 10px/1 var(--mono); text-transform: uppercase; text-decoration: none; letter-spacing: 1px; transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease; }
 .project-action:hover, .project-action:focus-visible { background: var(--ink); color: var(--paper); transform: translateY(-1px); outline: none; }
@@ -391,10 +407,48 @@ html[data-theme="evening"] .classified:hover { background: rgba(255, 42, 42, 0.0
 .classified h3 { margin: 0 0 9px; font: 900 1.2rem/1.08 var(--serif-display); text-transform: uppercase; letter-spacing: -0.45px; }
 .classified p { line-height: 1.52; margin: 0; }
 
+/* Skill bars — kept for CSS safety, replaced in JSX by capability-ledger */
 .skill-bars { margin-top: 22px; display: grid; gap: 10px; max-width: var(--content-mid); }
 .skill-bar-item { display: grid; grid-template-columns: 150px 1fr 40px; gap: 16px; align-items: center; font: 700 11px/1 var(--mono); text-transform: uppercase; letter-spacing: 1px; }
 .skill-track { height: 6px; background: var(--line); width: 100%; border: 1px solid var(--ink); }
 .skill-fill { height: 100%; background: var(--red); width: 0; transition: width 1s cubic-bezier(0.22, 1, 0.36, 1); }
+
+/* Capability Ledger — editorial domain breakdown */
+.capability-ledger {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 2px solid var(--ink);
+  border-left: 2px solid var(--ink);
+  margin-top: 28px;
+  max-width: var(--content-mid);
+}
+.capability-entry {
+  padding: 16px 18px;
+  border-right: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  transition: background 0.3s ease;
+}
+.capability-entry:hover { background: rgba(234, 221, 200, 0.4); }
+html[data-theme="evening"] .capability-entry:hover { background: rgba(255, 42, 42, 0.07); }
+.capability-domain {
+  font: 700 10px/1 var(--mono); text-transform: uppercase;
+  letter-spacing: 1.5px; color: var(--red); margin-bottom: 8px;
+}
+.capability-focus {
+  margin: 0 0 13px;
+  font: 900 1rem/1.12 var(--serif-display);
+  letter-spacing: -0.2px;
+}
+.capability-skills {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 5px;
+}
+.capability-skills li {
+  font: 400 9.5px/1.45 var(--mono); text-transform: uppercase;
+  letter-spacing: 0.7px; opacity: 0.7;
+  display: flex; align-items: baseline; gap: 5px;
+}
+.capability-skills li::before { content: "—"; color: var(--red); opacity: 0.65; flex-shrink: 0; }
 
 /* Current Focus */
 .focus-layout { display: grid; grid-template-columns: 5fr 7fr; gap: 24px; margin-top: 22px; align-items: start; }
@@ -562,6 +616,7 @@ html[data-theme="evening"] .dialog-actions a:hover { background: var(--ink); col
   .feature-title, .article-copy, .margin-notes { grid-column: 1 / -1; }
   /* Enforce 2 columns on tablet */
   .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .capability-ledger { grid-template-columns: repeat(2, 1fr); }
   .project-page-grid { grid-template-columns: 1fr; }
   .projects-intro { grid-template-columns: 1fr; max-width: 680px; }
   .project-sheet { margin-right: auto; }
@@ -682,9 +737,14 @@ html[data-theme="evening"] .dialog-actions a:hover { background: var(--ink); col
   .classifieds-intro h2 { font-size: 1.62rem; }
   .classified-grid { grid-template-columns: 1fr; }
   .classified:nth-child(3) { transform: none; }
-  .skill-name { order: 1; }
-  .skill-track { order: 2; }
-  .skill-pct { order: 3; text-align: right; }
+
+  /* ── Capability Ledger ── */
+  .capability-ledger { grid-template-columns: 1fr 1fr; }
+  .capability-focus { font-size: 0.95rem; }
+  .capability-skills li { font-size: 9px; }
+
+  /* ── CTA mobile ── */
+  .story-cta-button { width: 100%; justify-content: center; min-height: 44px; }
 
   /* ── Focus ── */
   .focus-intro h2 { font-size: 1.62rem; }
