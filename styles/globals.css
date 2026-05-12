@@ -17,13 +17,20 @@
   --space-4: 32px;
   --space-6: 48px;
   --space-8: 64px;
-  --content-wide: 1180px;
-  --content-mid: 1040px;
+
+  /* Adaptive editorial containers:
+     Scale gracefully from normal laptop → large desktop → ultrawide.
+     Minimum is the original value so nothing changes on small screens.     */
+  --content-wide: clamp(1180px, 88vw, 1600px);
+  --content-mid:  clamp(1040px, 80vw, 1480px);
 }
 
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* scroll-behavior is intentionally NOT set globally here.
+   Lenis handles smooth scrolling on desktop.
+   Native smooth scroll is only applied as a fallback in reduced-motion queries. */
+html { scroll-behavior: auto; }
 body {
   margin: 0; background: var(--paper); color: var(--ink);
   cursor: none; font-family: var(--serif-body); overflow-x: hidden;
@@ -425,7 +432,7 @@ html[data-theme="evening"] .classified:hover { background: rgba(255, 42, 42, 0.0
 .subscription-form input::placeholder, .subscription-form textarea::placeholder { color: color-mix(in srgb, var(--ink) 54%, transparent); }
 .subscription-form input:focus, .subscription-form textarea:focus { outline: none; border-bottom: 2px solid var(--red); }
 .subscription-form input:focus-visible, .subscription-form textarea:focus-visible { background: rgba(139, 58, 58, 0.06); }
-.subscription-form button { padding: 12px 24px; border: 2px solid var(--ink); background: transparent; font: 900 12px/1 var(--mono); text-transform: uppercase; letter-spacing: 1.5px; cursor: pointer; margin-top: 10px; width: 100%; box-shadow: 4px 4px 0 rgba(26,26,26,0.1); transition: all 0.2s ease; }
+.subscription-form button { padding: 12px 24px; border: 2px solid var(--ink); background: transparent; color: var(--ink); font: 900 12px/1 var(--mono); text-transform: uppercase; letter-spacing: 1.5px; cursor: pointer; margin-top: 10px; width: 100%; box-shadow: 4px 4px 0 rgba(26,26,26,0.1); transition: all 0.2s ease; }
 .subscription-form button:hover { background: var(--red); color: white; transform: translate(-2px, -2px); box-shadow: 6px 6px 0 rgba(26,26,26,0.15); }
 .subscription-form button[data-state="success"], .subscription-form button[data-state="error"] { color: var(--red); border-color: var(--red); }
 .form-status { min-height: 18px; margin: 0 0 10px; color: var(--red); font: 700 10px/1.4 var(--mono); letter-spacing: 1px; text-transform: uppercase; }
@@ -715,7 +722,55 @@ html[data-theme="evening"] .dialog-actions a:hover { background: var(--ink); col
   body, button, a, input, textarea { cursor: auto; }
   .cursor, .cursor-label { display: none; }
 }
+/* ── Large desktop (1440px+): breathe the editorial grid ── */
+@media (min-width: 1440px) {
+  /* Sheet padding scales slightly to fill wider canvas */
+  .sheet { padding: clamp(36px, 3.4vw, 52px); }
+
+  /* Cover hero: allow image plate to be taller, more presence */
+  .cover-plate { min-height: clamp(380px, 38vw, 540px); }
+
+  /* Cover grid gap opens up proportionally */
+  .cover-grid { gap: clamp(20px, 2.2vw, 30px); }
+
+  /* Lead note heading grows a touch */
+  .lead-note h2 { font-size: clamp(2rem, 2.6vw, 2.6rem); }
+
+  /* Feature: widen article body for better line length at large widths */
+  .article-copy { max-width: 68ch; }
+
+  /* Projects grid: bump minimum card width so cards grow rather than reflow */
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+    gap: clamp(36px, 4.2vw, 56px);
+  }
+
+  /* Projects intro heading can grow a little more */
+  .projects-intro-left h2 { font-size: clamp(3.5rem, 4.2vw, 5.5rem); }
+
+  /* Timeline and classifieds get more breathing room */
+  .timeline-item { padding: 16px 0; }
+  .classifieds-layout { gap: clamp(28px, 2.4vw, 38px); }
+
+  /* Contact spread: slightly wider gap */
+  .contact-spread { gap: clamp(28px, 2.6vw, 40px); }
+
+  /* Skills */
+  .skill-bar-item { grid-template-columns: 180px 1fr 44px; }
+}
+
+/* ── Ultrawide (1600px+): fine-tune proportions at maximum canvas ── */
+@media (min-width: 1600px) {
+  .sheet { padding: clamp(40px, 3.6vw, 58px); }
+  .cover { min-height: 90svh; }
+  .cover-plate { min-height: clamp(420px, 40vw, 580px); }
+  .cover-grid { gap: clamp(22px, 2.4vw, 34px); }
+  .projects-grid { gap: clamp(40px, 4.8vw, 64px); }
+  .feature-layout { gap: clamp(24px, 2vw, 32px); }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: smooth; } /* re-enable native smooth as fallback */
   .grain { animation: none; }
   .ticker-track { animation: none; }
   .reveal-up { transition: opacity 0.5s; transform: none; filter: none; }

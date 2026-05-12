@@ -8,6 +8,7 @@ import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { Cursor } from "@/components/ui/Cursor";
 import { ScrollDepthTracker } from "@/components/ui/ScrollDepthTracker";
 import { ImageParallax } from "@/components/ui/ImageParallax";
+import { SmoothScrollProvider } from "@/components/ui/SmoothScrollProvider";
 import { profile, siteUrl, structuredData } from "@/data/profile";
 import { projectStructuredData } from "@/data/projects";
 
@@ -94,13 +95,15 @@ export default function RootLayout({ children }) {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <a href="#publication" className="skip-link">Skip to portfolio</a>
         <ThemeProvider>
-          <Loader />
-          <ScrollProgress />
-          <FixedAtmosphere />
-          <Cursor />
-          <ImageParallax />
-          <ScrollDepthTracker />
-          {children}
+          <SmoothScrollProvider>
+            <Loader />
+            <ScrollProgress />
+            <FixedAtmosphere />
+            <Cursor />
+            <ImageParallax />
+            <ScrollDepthTracker />
+            {children}
+          </SmoothScrollProvider>
         </ThemeProvider>
         <Analytics />
       </body>
