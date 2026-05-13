@@ -59,6 +59,9 @@ export function SmoothScrollProvider({ children }) {
         }
         rafId = requestAnimationFrame(raf);
 
+        // Expose instance for dialog scroll-lock (stop/start only — no destroy)
+        window.__lenis = lenis;
+
         // Hash link support — intercept <a href="#section"> clicks
         // and delegate to Lenis for smooth animated scroll
         const handleHashClick = (e) => {
@@ -93,6 +96,8 @@ export function SmoothScrollProvider({ children }) {
       if (lenis?._hashClickHandler) {
         document.removeEventListener("click", lenis._hashClickHandler);
       }
+      // Clear global ref before destroying
+      if (window.__lenis === lenis) window.__lenis = null;
       // Destroy Lenis instance
       if (lenis) lenis.destroy();
     };

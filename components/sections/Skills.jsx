@@ -1,68 +1,54 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
-const classifieds = [
-  ["01", "Frontend Systems", "React and Next.js interfaces with clean component structure, responsive layouts, accessible interactions, and careful rendering performance."],
-  ["02", "Backend Architecture", "Node.js and Python API layers, REST routes, database modeling, modular services, and deployment-ready project organization."],
-  ["03", "AI Workflows", "Document intelligence, retrieval pipelines, prompt design, vector-search concepts, and LLM features built around usable product flows."]
-];
-
-const capabilities = [
+// Minimal engineering index — no descriptions, just dense dot-separated capability lists
+const ledger = [
   {
-    domain: "Frontend",
-    focus: "React / Next.js",
-    skills: ["Component architecture", "SSR & SSG patterns", "Responsive layouts", "Performance tuning", "Accessibility"]
+    number: "01",
+    category: "Frontend",
+    stack: "React · Next.js · TypeScript · Responsive UI · Accessibility · Performance"
   },
   {
-    domain: "Backend",
-    focus: "Node.js / Python / APIs",
-    skills: ["REST API design", "FastAPI microservices", "Database modeling", "Route architecture", "Deployment patterns"]
+    number: "02",
+    category: "Backend",
+    stack: "Node.js · Express · FastAPI · PostgreSQL · REST APIs · System Design"
   },
   {
-    domain: "AI Engineering",
-    focus: "RAG / LLM Systems",
-    skills: ["Retrieval pipelines", "Prompt engineering", "Vector search", "Document intelligence", "LLM integration"]
+    number: "03",
+    category: "AI Systems",
+    stack: "RAG · LLMs · LangChain · Vector Search · Prompt Engineering · Doc Intelligence"
   },
   {
-    domain: "Foundations",
-    focus: "DSA / System Design",
-    skills: ["Data structures", "Algorithm design", "System thinking", "Code quality", "Problem decomposition"]
+    number: "04",
+    category: "Foundations",
+    stack: "DSA · Problem Solving · Architecture Thinking · Clean Code · Git"
   }
 ];
 
 export function Skills() {
   return (
     <section className="classifieds sheet" id="skills">
-      <SectionLabel left="Classified Advertisements" right="Page 05" />
-      <div className="classifieds-layout">
-        <div className="classifieds-intro">
-          <Reveal as="h2">Available for full stack roles where frontend quality meets backend discipline.</Reveal>
-        </div>
-        <div className="classified-grid">
-          {classifieds.map(([number, title, copy]) => (
-            <Reveal as="article" className="classified" key={number}>
-              <div className="classified-number" aria-hidden="true">{number}</div>
-              <h3>{title}</h3>
-              <p>{copy}</p>
-            </Reveal>
-          ))}
-        </div>
-      </div>
+      <SectionLabel left="Engineering Index" right="Page 05" />
 
-      {/* Capability Ledger — replaces misleading % bars */}
-      <Reveal as="div" className="capability-ledger" aria-label="Engineering capabilities by domain">
-        {capabilities.map(({ domain, focus, skills }) => (
-          <div className="capability-entry" key={domain}>
-            <div className="capability-domain">{domain}</div>
-            <h4 className="capability-focus">{focus}</h4>
-            <ul className="capability-skills">
-              {skills.map((skill) => (
-                <li key={skill}>{skill}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </Reveal>
+      <div className="eng-ledger-layout">
+        {/* Left: editorial headline */}
+        <Reveal as="div" className="eng-ledger-intro">
+          <h2>Available for full stack engineering roles where frontend quality meets backend discipline and applied AI.</h2>
+        </Reveal>
+
+        {/* Right: compact numbered capability rows */}
+        <Reveal as="div" className="eng-ledger-rows" aria-label="Engineering capabilities">
+          {ledger.map(({ number, category, stack }) => (
+            <div className="eng-ledger-row" key={number}>
+              <div className="eng-row-meta">
+                <span className="eng-row-number" aria-hidden="true">{number}</span>
+                <strong className="eng-row-category">{category}</strong>
+              </div>
+              <p className="eng-row-stack">{stack}</p>
+            </div>
+          ))}
+        </Reveal>
+      </div>
     </section>
   );
 }

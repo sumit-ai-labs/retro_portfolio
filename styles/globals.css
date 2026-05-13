@@ -396,59 +396,87 @@ html[data-theme="evening"] .plate-one img { filter: none; }
 /* Folio mark on cover */
 .folio-mark { position: absolute; bottom: 20px; left: 28px; font: 700 11px/1 var(--mono); text-transform: uppercase; letter-spacing: 3px; opacity: 0.4; }
 
-/* Classifieds / Skills */
-.classifieds-layout { display: grid; grid-template-columns: 0.88fr 1.12fr; gap: 24px; margin-top: 22px; }
-.classifieds-intro h2 { font: 900 clamp(1.78rem, 2.9vw, 2.25rem)/1 var(--serif-display); letter-spacing: -0.75px; transform: rotate(-0.08deg); }
-.classified-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 2px solid var(--ink); border-left: 2px solid var(--ink); }
-.classified { padding: 12px 13px; border-right: 2px solid var(--ink); border-bottom: 2px solid var(--ink); transition: background 0.3s ease; cursor: crosshair; }
-.classified:hover { background: rgba(234, 221, 200, 0.5); }
-html[data-theme="evening"] .classified:hover { background: rgba(255, 42, 42, 0.08); }
-.classified-number { font: 700 11px/1 var(--mono); color: var(--red); margin-bottom: 8px; letter-spacing: 1.5px; }
-.classified h3 { margin: 0 0 9px; font: 900 1.2rem/1.08 var(--serif-display); text-transform: uppercase; letter-spacing: -0.45px; }
-.classified p { line-height: 1.52; margin: 0; }
-
-/* Skill bars — kept for CSS safety, replaced in JSX by capability-ledger */
-.skill-bars { margin-top: 22px; display: grid; gap: 10px; max-width: var(--content-mid); }
-.skill-bar-item { display: grid; grid-template-columns: 150px 1fr 40px; gap: 16px; align-items: center; font: 700 11px/1 var(--mono); text-transform: uppercase; letter-spacing: 1px; }
-.skill-track { height: 6px; background: var(--line); width: 100%; border: 1px solid var(--ink); }
-.skill-fill { height: 100%; background: var(--red); width: 0; transition: width 1s cubic-bezier(0.22, 1, 0.36, 1); }
-
-/* Capability Ledger — editorial domain breakdown */
-.capability-ledger {
+/* ── Engineering Index ── */
+.eng-ledger-layout {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-top: 2px solid var(--ink);
-  border-left: 2px solid var(--ink);
+  grid-template-columns: 1fr 1.4fr;
+  gap: clamp(36px, 5vw, 72px);
   margin-top: 28px;
-  max-width: var(--content-mid);
+  align-items: start;
 }
-.capability-entry {
-  padding: 16px 18px;
-  border-right: 2px solid var(--ink);
-  border-bottom: 2px solid var(--ink);
-  transition: background 0.3s ease;
+.eng-ledger-intro h2 {
+  font: 900 clamp(1.78rem, 2.9vw, 2.25rem)/1.06 var(--serif-display);
+  letter-spacing: -0.75px;
+  max-width: 15ch;
+  margin: 0;
 }
-.capability-entry:hover { background: rgba(234, 221, 200, 0.4); }
-html[data-theme="evening"] .capability-entry:hover { background: rgba(255, 42, 42, 0.07); }
-.capability-domain {
-  font: 700 10px/1 var(--mono); text-transform: uppercase;
-  letter-spacing: 1.5px; color: var(--red); margin-bottom: 8px;
+
+/* Right: numbered capability rows */
+.eng-ledger-rows {
+  border-top: 2px solid var(--ink);
 }
-.capability-focus {
-  margin: 0 0 13px;
-  font: 900 1rem/1.12 var(--serif-display);
+.eng-ledger-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+.eng-row-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 7px;
+  grid-column: 1 / -1;
+}
+.eng-row-number {
+  font: 700 10px/1 var(--mono);
+  color: var(--red);
+  letter-spacing: 1.5px;
+}
+.eng-row-category {
+  font: 900 0.95rem/1 var(--serif-display);
+  text-transform: uppercase;
   letter-spacing: -0.2px;
 }
-.capability-skills {
-  list-style: none; padding: 0; margin: 0;
-  display: flex; flex-direction: column; gap: 5px;
+.eng-row-stack {
+  grid-column: 1 / -1;
+  margin: 0;
+  font: 400 0.82rem/1.55 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  opacity: 0.68;
 }
-.capability-skills li {
-  font: 400 9.5px/1.45 var(--mono); text-transform: uppercase;
-  letter-spacing: 0.7px; opacity: 0.7;
-  display: flex; align-items: baseline; gap: 5px;
-}
-.capability-skills li::before { content: "—"; color: var(--red); opacity: 0.65; flex-shrink: 0; }
+
+/* ── Legacy stubs — not rendered, prevent cascade errors ── */
+.classifieds-layout { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 36px; margin-top: 22px; align-items: start; }
+.classifieds-intro h2 { font: 900 clamp(1.78rem, 2.9vw, 2.25rem)/1.04 var(--serif-display); letter-spacing: -0.75px; max-width: 16ch; }
+.classified-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.classified { padding: 12px 13px; }
+.classified-number { font: 700 11px/1 var(--mono); color: var(--red); }
+.classified h3 { margin: 0 0 9px; font: 900 1.2rem/1.08 var(--serif-display); text-transform: uppercase; }
+.classified p { line-height: 1.52; margin: 0; }
+.skill-bars { margin-top: 22px; display: grid; gap: 10px; max-width: var(--content-mid); }
+.skill-bar-item { display: grid; grid-template-columns: 150px 1fr 40px; gap: 16px; align-items: center; font: 700 11px/1 var(--mono); }
+.skill-track { height: 6px; background: var(--line); width: 100%; border: 1px solid var(--ink); }
+.skill-fill { height: 100%; background: var(--red); width: 0; }
+.capability-ledger { display: grid; grid-template-columns: repeat(4, 1fr); }
+.capability-entry { padding: 16px 18px; }
+.capability-domain { font: 700 10px/1 var(--mono); text-transform: uppercase; color: var(--red); }
+.capability-focus { margin: 0 0 13px; font: 900 1rem/1.12 var(--serif-display); }
+.capability-skills { list-style: none; padding: 0; margin: 0; }
+.capability-skills li { font: 400 9.5px/1.45 var(--mono); opacity: 0.7; }
+.capability-skills li::before { content: "—"; color: var(--red); }
+.capability-ledger-rows { display: flex; flex-direction: column; }
+.ledger-row { display: grid; grid-template-columns: 32px 1fr; padding: 28px 0; }
+.ledger-number { font: 700 10px/1 var(--mono); color: var(--red); }
+.ledger-title { margin: 0 0 8px; font: 900 1.12rem/1.05 var(--serif-display); text-transform: uppercase; }
+.ledger-skills { margin: 0; font: 400 0.88rem/1.6 var(--mono); text-transform: uppercase; }
+.capability-strip { margin-top: 56px; border-top: 2px solid var(--ink); }
+.strip-row { display: grid; grid-template-columns: 140px 1fr; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.strip-domain { font: 700 10px/1 var(--mono); text-transform: uppercase; color: var(--red); }
+.strip-items { font: 400 0.92rem/1.5 var(--serif-body); }
+
 
 /* Current Focus */
 .focus-layout { display: grid; grid-template-columns: 5fr 7fr; gap: 24px; margin-top: 22px; align-items: start; }
@@ -506,9 +534,37 @@ html[data-theme="evening"] .capability-entry:hover { background: rgba(255, 42, 4
 .brand-mark-small svg { width: 20px; height: 20px; color: var(--ink); }
 
 /* Dialog */
-.project-dialog-shell { position: fixed; inset: 0; z-index: 980; display: grid; place-items: center; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); padding: 24px; overflow-y: auto; }
-.project-dialog { position: relative; width: min(800px, 90vw); max-height: min(860px, calc(100vh - 48px)); padding: 0; border: none; background: transparent; color: var(--ink); }
-.dialog-paper { max-height: inherit; padding: 40px; border: 2px solid var(--ink); background: var(--paper); box-shadow: 12px 14px 0 rgba(0,0,0,0.25); position: relative; overflow-y: auto; overflow-x: hidden; }
+.project-dialog-shell {
+  position: fixed; inset: 0; z-index: 980;
+  display: grid; place-items: center;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  padding: 24px;
+  /* Shell does NOT scroll — it is a fixed backdrop */
+  overflow: hidden;
+}
+.project-dialog {
+  position: relative;
+  width: min(800px, 90vw);
+  max-height: min(860px, calc(100svh - 48px));
+  padding: 0; border: none; background: transparent; color: var(--ink);
+  /* Flex column so paper fills to max-height */
+  display: flex; flex-direction: column;
+}
+.dialog-paper {
+  flex: 1 1 auto;
+  min-height: 0; /* critical — allows flex child to shrink and scroll */
+  padding: 40px;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  box-shadow: 12px 14px 0 rgba(0,0,0,0.25);
+  position: relative;
+  /* Paper is the ONLY scroll surface */
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
 .dialog-paper::-webkit-scrollbar, .side-index::-webkit-scrollbar { width: 6px; height: 6px; }
 .dialog-paper::-webkit-scrollbar-thumb, .side-index::-webkit-scrollbar-thumb { background: var(--red); }
 .dialog-close { position: absolute; right: 20px; top: 20px; border: none; background: transparent; font: 700 11px/1 var(--mono); text-transform: uppercase; letter-spacing: 1.5px; cursor: pointer; z-index: 10; transition: color 0.2s; }
@@ -623,7 +679,7 @@ html[data-theme="evening"] .dialog-actions a:hover { background: var(--ink); col
   .cover-grid { grid-template-columns: 1fr; }
   .lead-note { grid-column: 1 / -1; }
   .cover-plate { grid-column: 1 / -1; min-height: 300px; }
-  .feature-layout, .classifieds-layout, .contact-spread, .focus-layout { grid-template-columns: 1fr; }
+  .feature-layout, .classifieds-layout, .eng-ledger-layout, .contact-spread, .focus-layout { grid-template-columns: 1fr; }
   .feature-title, .article-copy, .margin-notes { grid-column: 1 / -1; }
   /* Enforce 2 columns on tablet */
   .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -764,15 +820,11 @@ html[data-theme="evening"] .dialog-actions a:hover { background: var(--ink); col
   .project-action { min-height: 30px; padding: 8px 12px; font-size: 9px; border-radius: 4px; }
   .editorial-note { margin-top: 14px; padding-top: 10px; font-size: 0.8rem; }
 
-  /* ── Classifieds / Skills ── */
-  .classifieds-intro h2 { font-size: 1.62rem; }
-  .classified-grid { grid-template-columns: 1fr; }
-  .classified:nth-child(3) { transform: none; }
-
-  /* ── Capability Ledger ── */
-  .capability-ledger { grid-template-columns: 1fr 1fr; }
-  .capability-focus { font-size: 0.95rem; }
-  .capability-skills li { font-size: 9px; }
+  /* ── Engineering Index ── */
+  .eng-ledger-layout { grid-template-columns: 1fr; gap: 24px; }
+  .eng-ledger-intro h2 { font-size: 1.62rem; max-width: 100%; }
+  .eng-ledger-row { padding: 16px 0; }
+  .eng-row-stack { font-size: 0.78rem; letter-spacing: 0.4px; }
 
   /* ── CTA mobile ── */
   .story-cta-button { width: 100%; justify-content: center; min-height: 44px; }
@@ -796,9 +848,9 @@ html[data-theme="evening"] .dialog-actions a:hover { background: var(--ink); col
   /* ── Dialog ── */
   .dialog-columns { columns: 1; }
   .dialog-title { font-size: 2.2rem; }
-  .dialog-paper { padding: 28px 20px; }
-  .project-dialog-shell { padding: 14px; align-items: start; }
-  .project-dialog { width: min(100%, 680px); max-height: calc(100vh - 28px); }
+  .dialog-paper { padding: 24px 18px; }
+  .project-dialog-shell { padding: 12px; }
+  .project-dialog { width: 100%; max-height: calc(100svh - 24px); }
   .project-sheet h1, .not-found h1 { font-size: clamp(2.35rem, 14vw, 4.2rem); }
   .project-hook { font-size: 1.28rem; }
 }

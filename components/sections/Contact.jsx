@@ -53,6 +53,11 @@ export function Contact() {
     setStatusMsg("Transmitting...");
 
     try {
+      // Guard: catch missing env vars early
+      if (!SVC || !TPL || !KEY) {
+        throw new Error("EmailJS env vars not loaded — restart dev server");
+      }
+
       await emailjs.send(SVC, TPL, {
         name,
         email,
@@ -65,13 +70,15 @@ export function Contact() {
       form.reset();
       track("contact_interaction", { status: "success" });
 
-      // 15s cooldown — prevents repeat spam
       setCooldown(true);
       setTimeout(() => setCooldown(false), 15_000);
-    } catch {
+    } catch (err) {
+      // Log actual error for diagnosis
+      console.error("[Contact] EmailJS error:", err);
+      const detail = err?.text || err?.message || "unknown";
       setStatus("error");
-      setStatusMsg("Transmission failed — please try again shortly.");
-      track("contact_interaction", { status: "error", reason: "emailjs_failure" });
+      setStatusMsg(`Transmission failed — ${detail}`);
+      track("contact_interaction", { status: "error", reason: detail });
     }
   }
 

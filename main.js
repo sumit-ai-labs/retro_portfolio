@@ -104,14 +104,14 @@ document.addEventListener("DOMContentLoaded", () => {
       ]
     },
 
-    "spotify-clone": {
+    "soundwave": {
       role: "Full Stack Engineer",
       tools: "React, Node.js, Express, MongoDB, REST patterns",
       year: "2025",
       outcome: "Production-style music app UX",
-      hook: "A familiar streaming product experience backed by full-stack structure.",
+      hook: "A premium streaming experience built with full-stack architecture and waveform-driven UI.",
       body: [
-        "Problem solved: music interfaces become frustrating when browsing, playback, and navigation feel disconnected. This project keeps the product model familiar while showing clean frontend composition and backend-ready structure.",
+        "Problem solved: music interfaces become frustrating when browsing, playback, and navigation feel disconnected. SoundWave keeps the product model intuitive while demonstrating clean frontend composition and backend-ready structure.",
         "Architecture: the app uses React for reusable UI surfaces, Node.js and Express patterns for route organization, and MongoDB-oriented data modeling for future persistence and user state.",
         "Engineering quality: the layout is responsive, the interaction model is predictable, and the codebase is structured for future authentication, playlist persistence, and streaming API integration.",
         `<ul class="dialog-proof"><li><strong>Performance</strong><span>UI is organized to reduce unnecessary layout churn across browsing and player regions.</span></li><li><strong>Deployment</strong><span>Source is reviewable on GitHub and structured for public deployment once hosting is attached.</span></li><li><strong>Scale signal</strong><span>Component and route boundaries support additional media features without collapsing the interface structure.</span></li></ul>`,
@@ -122,7 +122,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const dialog = document.getElementById('projectDialog');
   const dialogClose = document.getElementById('dialogClose');
-  
+
+  // Robust scroll-lock helpers — position:fixed is the only cross-browser reliable approach
+  let _scrollLockY = 0;
+  function lockScroll() {
+    _scrollLockY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${_scrollLockY}px`;
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
+  }
+  function unlockScroll() {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    document.body.style.overflow = '';
+    window.scrollTo(0, _scrollLockY);
+  }
+
   if (dialog) {
     const openProjectDialog = (card) => {
       if (dialog.open) return;
@@ -145,8 +162,25 @@ document.addEventListener("DOMContentLoaded", () => {
       }).join("");
 
       dialog.showModal();
-      document.body.style.overflow = "hidden";
+      lockScroll();
     };
+
+    // Trap wheel events — scroll inside dialog only, never the page behind
+    dialog.addEventListener('wheel', (e) => {
+      const atTop = dialog.scrollTop === 0 && e.deltaY < 0;
+      const atBottom = dialog.scrollTop + dialog.clientHeight >= dialog.scrollHeight && e.deltaY > 0;
+      if (atTop || atBottom) e.preventDefault();
+    }, { passive: false });
+
+    // Trap touch scroll for mobile
+    let _touchStartY = 0;
+    dialog.addEventListener('touchstart', (e) => { _touchStartY = e.touches[0].clientY; }, { passive: true });
+    dialog.addEventListener('touchmove', (e) => {
+      const dy = _touchStartY - e.touches[0].clientY;
+      const atTop = dialog.scrollTop === 0 && dy < 0;
+      const atBottom = dialog.scrollTop + dialog.clientHeight >= dialog.scrollHeight && dy > 0;
+      if (atTop || atBottom) e.preventDefault();
+    }, { passive: false });
 
     document.querySelectorAll('.story-card').forEach(card => {
       card.addEventListener('click', (event) => {
@@ -161,26 +195,30 @@ document.addEventListener("DOMContentLoaded", () => {
         openProjectDialog(card);
       });
     });
-    
+
     if (dialogClose) {
-        dialogClose.addEventListener('click', () => {
-            dialog.close();
-            document.body.style.overflow = "";
-        });
+      dialogClose.addEventListener('click', () => {
+        dialog.close();
+        unlockScroll();
+      });
     }
-    
+
     dialog.addEventListener('click', (e) => {
       const contactLink = e.target.closest('a[href="#contact"]');
       if (contactLink) {
-          dialog.close();
-          document.body.style.overflow = "";
-          return;
+        dialog.close();
+        unlockScroll();
+        return;
       }
-
       if (e.target === dialog) {
-          dialog.close();
-          document.body.style.overflow = "";
+        dialog.close();
+        unlockScroll();
       }
+    });
+
+    // Also handle Escape key (native dialog behavior)
+    dialog.addEventListener('close', () => {
+      if (document.body.style.position === 'fixed') unlockScroll();
     });
   }
   // 1. Theme Toggle (default: Evening Edition = dark)

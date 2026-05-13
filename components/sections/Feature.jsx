@@ -20,7 +20,7 @@ export function Feature() {
             I build practical web applications with polished interfaces, structured backend logic, and AI features that solve clear user problems. My work combines React and Next.js on the frontend with Node.js, Python, APIs, and database design on the backend.
           </Reveal>
           <Reveal as="p">
-            My strongest work sits between product clarity and system thinking: PolicyAI simplifies insurance documents with AI-assisted analysis, while the Spotify Clone shows full-stack UI structure, navigation, and playback-focused product flow. Recruiters can expect clean code, careful debugging, and a strong eye for user experience.
+            My strongest work sits between product clarity and system thinking: PolicyAI simplifies insurance documents with AI-assisted analysis, while SoundWave shows full-stack UI structure, navigation, and playback-focused product flow. Recruiters can expect clean code, careful debugging, and a strong eye for user experience.
           </Reveal>
           <Reveal as="p">
             As a React Developer, Next.js Developer, Python Developer, Full Stack Developer, and AI Engineer, I am especially interested in RAG Systems, FastAPI services, and production interfaces that make technical depth easy to review.

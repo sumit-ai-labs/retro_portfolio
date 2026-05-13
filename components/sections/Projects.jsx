@@ -24,34 +24,91 @@ function ProjectDialog({ project, onClose }) {
   useEffect(() => {
     if (!project) return undefined;
 
-    const previousOverflow = document.body.style.overflow;
+    // ── 1. Stop Lenis ──
+    const lenis = window.__lenis;
+    if (lenis) lenis.stop();
+
+    // ── 2. Freeze body (position:fixed is the only cross-browser reliable lock) ──
+    const scrollY = window.scrollY;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
     document.body.style.overflow = "hidden";
-    const onKeyDown = (event) => {
-      if (event.key === "Escape") {
-        onClose();
-        return;
-      }
+    if (scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
 
-      if (event.key !== "Tab") return;
-      const focusable = dialogRef.current?.querySelectorAll("a[href], button:not([disabled])");
-      if (!focusable?.length) return;
+    // ── 3. Capture-phase wheel interceptor ──
+    // CRITICAL: Lenis calls e.preventDefault() on ALL wheel events even after lenis.stop().
+    // capture:true fires OUR listener BEFORE Lenis (which is in bubble phase on window).
+    // stopImmediatePropagation() ensures Lenis never sees the event.
+    // For events inside the paper: manually scroll it. For outside: block completely.
+    const getPaper = () => dialogRef.current?.querySelector(".dialog-paper");
 
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
+    const captureWheel = (e) => {
+      const paper = getPaper();
+      if (paper && e.target.closest(".dialog-paper")) {
+        // Inside dialog paper — handle scroll manually, stop Lenis from interfering
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        paper.scrollTop += e.deltaY;
+      } else {
+        // Outside dialog — block completely
+        e.preventDefault();
+        e.stopImmediatePropagation();
       }
     };
 
+    // Touch support
+    let touchStartY = 0;
+    const captureTouchStart = (e) => {
+      if (e.target.closest(".dialog-paper")) touchStartY = e.touches[0].clientY;
+    };
+    const captureTouchMove = (e) => {
+      const paper = getPaper();
+      if (paper && e.target.closest(".dialog-paper")) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        const dy = touchStartY - e.touches[0].clientY;
+        paper.scrollTop += dy;
+        touchStartY = e.touches[0].clientY;
+      } else {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+      }
+    };
+
+    document.addEventListener("wheel", captureWheel, { capture: true, passive: false });
+    document.addEventListener("touchstart", captureTouchStart, { capture: true, passive: true });
+    document.addEventListener("touchmove", captureTouchMove, { capture: true, passive: false });
+
+    // ── 4. Keyboard: Escape + Tab trap ──
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") { onClose(); return; }
+      if (event.key !== "Tab") return;
+      const focusable = dialogRef.current?.querySelectorAll("a[href], button:not([disabled])");
+      if (!focusable?.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault(); last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault(); first.focus();
+      }
+    };
     window.addEventListener("keydown", onKeyDown);
     window.requestAnimationFrame(() => closeRef.current?.focus());
 
     return () => {
-      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("wheel", captureWheel, { capture: true });
+      document.removeEventListener("touchstart", captureTouchStart, { capture: true });
+      document.removeEventListener("touchmove", captureTouchMove, { capture: true });
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+      window.scrollTo({ top: scrollY, behavior: "instant" });
+      if (lenis) requestAnimationFrame(() => lenis.start());
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [project, onClose]);

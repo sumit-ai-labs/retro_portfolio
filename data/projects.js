@@ -35,13 +35,13 @@ export const projects = [
     ]
   },
   {
-    slug: "spotify-clone",
-    title: "Spotify Clone",
+    slug: "soundwave",
+    title: "SoundWave",
     label: "FULL STACK APP",
     scanStrip: "FULL STACK · REACT ECOSYSTEM · SOLO BUILD",
     year: "2025",
-    image: "/images/clone.png",
-    imageAlt: "Spotify Clone product screenshot",
+    image: "/images/image.png",
+    imageAlt: "SoundWave product screenshot",
     github: "https://github.com/sumit-ai-labs/Spotify_Clone",
     stack: ["React", "Node.js", "Express", "MongoDB"],
     role: "Full Stack Engineer",
@@ -49,7 +49,7 @@ export const projects = [
     outcome: "Production-style music app UX",
     hook: "Production-grade streaming interface engineered for predictable media workflows.",
     summary:
-      "A music streaming interface with production-style navigation, playback UI, reusable layout patterns, and backend-ready application structure.",
+      "A music streaming application with production-style navigation, waveform visualizations, reusable layout patterns, and backend-ready application structure.",
     proof: [
       ["PROBLEM", "Disjointed navigation breaks media playback."],
       ["ARCHITECTURE", "React interface connected to Node.js and MongoDB."],
@@ -58,7 +58,7 @@ export const projects = [
     engineeringWins: "clean state management · scalable routes · reusable UI",
     editorialNote: "Filed in blue ink: strict state separation.",
     body: [
-      "Problem solved: music interfaces become frustrating when browsing, playback, and navigation feel disconnected. This project keeps the product model familiar while showing clean frontend composition and backend-ready structure.",
+      "Problem solved: music interfaces become frustrating when browsing, playback, and navigation feel disconnected. SoundWave keeps the product model familiar while showing clean frontend composition and backend-ready structure.",
       "Architecture: the app uses React for reusable UI surfaces, Node.js and Express patterns for route organization, and MongoDB-oriented data modeling for future persistence and user state.",
       "Engineering quality: the layout is responsive, the interaction model is predictable, and the codebase is structured for future authentication, playlist persistence, and streaming API integration."
     ],
